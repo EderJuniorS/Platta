@@ -1,0 +1,370 @@
+/* ============================================= */
+/* --- Estilos da Página de Cadastro (Signup) --- */
+/* ============================================= */
+
+.signup-page {
+    /* Garante que o body ocupe a tela inteira */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+}
+
+.signup-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Divide a tela em duas colunas 50/50 */
+    width: 100%;
+    min-height: 100vh;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10%; /* Espaçamento interno na coluna do formulário */
+}
+
+/* Estilo do Logo Específico desta Página */
+.logo-signup {
+    font-size: 2.8rem;
+    font-weight: 500;
+    margin-bottom: 40px;
+    color: #ffffff;
+}
+
+.logo-signup strong {
+    font-weight: 700;
+    /* Simula as duas barras verticais */
+    border-left: 4px solid #fff;
+    border-right: 4px solid #fff;
+    padding: 2px 14px 2px 10px;
+    margin-right: 8px;
+    color: #ffffff;
+}
+
+.signup-header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+.signup-header p {
+    font-size: 1rem;
+    color: #a0a0a0;
+    margin-bottom: 20px; /* <-- Altere de 30px para 20px */
+}
+
+/* Estilos do Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+form label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+/* MUDANÇA: 'margin-bottom' foi movido para o wrapper */
+/* ATUALIZADO: Adicionados os seletores para email e tel */
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"] {
+    background-color: #000;
+    border: 1px solid #444;
+    border-radius: 12px;
+    padding: 16px;
+    color: #fff;
+    font-size: 1rem;
+    width: 100%; /* Garante que o input ocupe todo o wrapper */
+}
+
+/* NOVO: Estilo para o 'div' que segura o input/select */
+#inputWrapper {
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+/* ATUALIZADO: Adicionados os seletores para email e tel */
+form input[type="text"]::placeholder,
+form input[type="email"]::placeholder,
+form input[type="tel"]::placeholder {
+    color: #777;
+}
+
+/* ATUALIZADO: Adicionados os seletores para email e tel */
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="tel"]:focus {
+    outline: none;
+    border-color: #fff;
+}
+
+/* Estilos do Checkbox de Termos */
+.terms-container {
+    display: flex;
+    align-items: flex-start; /* Alinha o checkbox com o topo do texto */
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+/* Estilização customizada do checkbox */
+form input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #000;
+    border: 1px solid #777;
+    border-radius: 4px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    position: relative;
+    top: 4px; /* Alinha verticalmente com o texto */
+    flex-shrink: 0; /* Impede que o checkbox encolha */
+}
+
+form input[type="checkbox"]:checked {
+    background-color: #fff;
+    border-color: #fff;
+    /* Adiciona o "check" usando pseudo-elemento */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000000'%3E%3Cpath d='M12.207 4.793a1 1 0 0 1 0 1.414l-5 5a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L6.5 9.086l4.293-4.293a1 1 0 0 1 1.414 0z'/%3E%3C/svg%3E");
+    background-size: 14px 14px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.terms-container label {
+    font-size: 0.8rem;
+    color: #a0a0a0;
+    line-height: 1.6;
+}
+
+.terms-container label strong {
+    color: #e0e0e0; /* Texto dos termos fica mais claro */
+    font-weight: 500;
+}
+
+/* Botão de Próximo */
+.btn-next {
+    background-color: #222;
+    color: #e0e0e0;
+    border: 1px solid #333;
+    border-radius: 20px;
+    padding: 14px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px; /* Largura fixa para o botão */
+    height: 50px;
+}
+
+.btn-next:hover {
+    background-color: #333;
+    border-color: #555;
+    color: #fff;
+}
+
+.btn-next span {
+    font-size: 1.5rem; /* Tamanho da seta */
+    transition: transform 0.3s;
+}
+
+.btn-next:hover span {
+    transform: translateX(5px); /* Efeito de mover a seta */
+}
+
+/* Coluna da Imagem */
+.signup-image-bg {
+    background-image: url('../img/Personagem\ Cadastro.png');
+    background-size: cover;
+    background-position: center 30%; /* Posição da imagem um pouco mais para cima */
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+/* --- Estilos do Indicador de Etapas --- */
+
+.step-indicator {
+    display: flex;
+    justify-content: flex-start; /* <-- ALTERADO DE 'center' PARA 'flex-start' */
+    align-items: center;
+    gap: 8px; /* <-- REDUZIDO de 12px (fica mais parecido com a imagem) */
+    margin-bottom: 30px; /* Espaço antes do formulário */
+}
+
+.step {
+    width: 10px;  /* Largura do círculo */
+    height: 10px; /* Altura do círculo */
+    border-radius: 50%; /* Torna o 'div' um círculo */
+    background-color: #444; /* Cor inativa (cinza escuro, da paleta) */
+    transition: background-color 0.3s ease;
+}
+
+.step.active {
+    background-color: #3B82F6; /* Cor ativa (azul) */
+}
+
+/* --- NOVO: Estilos para os campos de Seleção (Select) --- */
+
+form select {
+    background-color: #000;
+    border: 1px solid #444;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 1rem;
+    width: 100%;
+    
+    /* Remove a aparência padrão do sistema */
+    appearance: none;
+    -webkit-appearance: none;
+
+    /* Adiciona uma seta personalizada */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23777'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 0 1 1.414 0L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 0-1.414z' clip-rule='evenodd' /%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 1.2em 1.2em;
+}
+
+/* Estilo para o texto do placeholder (quando a primeira opção está selecionada) */
+form select:invalid {
+    color: #777;
+}
+
+/* Estilo para o texto quando uma opção válida é selecionada */
+form select:valid {
+    color: #fff;
+}
+
+form select:focus {
+    outline: none;
+    border-color: #fff;
+}
+
+/* Estilo para as opções no dropdown */
+form select option {
+    background-color: #222;
+    color: #fff;
+    border: none;
+}
+
+#cadastro-footer {
+    margin-top: 0; /* Remove o margin-top padrão da classe .login-footer-links */
+    margin-bottom: 30px; /* Adiciona um espaço antes do botão "Próximo" */
+    justify-content: flex-start; /* <-- ADICIONE/ALTERE PARA ESTA LINHA */
+}
+
+/* ============================================= */
+/* --- FIM dos Estilos da Página de Cadastro (Signup) --- */
+/* ============================================= */
+
+
+
+
+
+/* ============================================= */
+/* --- INÍCIO: Estilos da Página de Login --- */
+/* ============================================= */
+
+/* Ajuste no wrapper de inputs para o login (sem margin-bottom) */
+.login-input-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Espaço entre o email e a senha */
+}
+
+/* Adiciona o tipo 'password' às regras existentes */
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="password"] {
+    background-color: #000;
+    border: 1px solid #444;
+    border-radius: 12px;
+    padding: 16px;
+    color: #fff;
+    font-size: 1rem;
+    width: 100%; 
+}
+
+/* Adiciona o placeholder do 'password' */
+form input[type="text"]::placeholder,
+form input[type="email"]::placeholder,
+form input[type="tel"]::placeholder,
+form input[type="password"]::placeholder {
+    color: #777;
+}
+
+/* Adiciona o foco do 'password' */
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="tel"]:focus,
+form input[type="password"]:focus {
+    outline: none;
+    border-color: #fff;
+}
+
+/* --- Novo Botão Primário (Branco) --- */
+.btn-primary-login {
+    background-color: #f0f0f0; /* Fundo branco/cinza claro */
+    color: #000; /* Texto preto */
+    border: 1px solid #f0f0f0;
+    border-radius: 30px; /* Mais arredondado */
+    padding: 16px 24px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Ocupa 100% da largura */
+}
+
+.btn-primary-login:hover {
+    background-color: #fff; /* Fica branco puro no hover */
+    border-color: #fff;
+}
+
+.btn-primary-login span {
+    font-size: 1.5rem;
+    transition: transform 0.3s;
+}
+
+.btn-primary-login:hover span {
+    transform: translateX(5px);
+}
+
+/* --- Novos Links do Rodapé --- */
+.login-footer-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.login-footer-links a {
+    color: #a0a0a0; /* Cor secundária */
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.login-footer-links a:hover {
+    color: #fff; /* Cor primária no hover */
+}
+
+/* ============================================= */
+/* --- FIM: Estilos da Página de Login --- */
+/* ============================================= */

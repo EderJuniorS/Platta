@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cakto - Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+
+        <aside class="sidebar-left">
+            <header class="sidebar-header">
+                <div class="logo">
+                    <img src="img/Logo.png" alt="Platta Logo"> <span>Platta</span>
+                </div>
+                <i class="fas fa-search"></i>
+            </header>
+
+            <div class="faturamento-card">
+                <span>Faturamento</span>
+                <strong>R$ 0,00 / R$ 10K</strong>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 0%;"></div>
+                </div>
+                <span>0%</span>
+            </div>
+
+            <nav class="main-nav">
+                <ul>
+                    <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-box-open"></i> Produtos</a></li>
+                    <li><a href="#"><i class="fas fa-store"></i> Vitrine <span class="badge badge-green">Novo</span></a></li>
+                    <li><a href="#"><i class="fas fa-tag"></i> Minhas Vendas</a></li>
+                    <li><a href="#"><i class="fas fa-signature"></i> Assinaturas</a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i> Relatórios</a></li>
+                    <li><a href="#"><i class="fas fa-handshake"></i> Afiliados</a></li>
+                    <li><a href="#"><i class="fas fa-wallet"></i> Financeiro</a></li>
+                    <li><a href="#"><i class="fas fa-cogs"></i> Integrações</a></li>
+                    <li><a href="#"><i class="fas fa-ticket-alt"></i> Cupons</a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> Quiz <span class="badge badge-green">Novo</span></a></li>
+                    <li><a href="#"><i class="fas fa-filter"></i> Funileiro <span class="badge badge-blue">Beta</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <h2>Dashboard</h2>
+                </div>
+                <div class="header-center">
+                    <div class="filter-select">
+                        <select>
+                            <option>Tipo</option>
+                        </select>
+                    </div>
+                    <div class="filter-select">
+                        <select>
+                            <option>Produtos</option>
+                        </select>
+                    </div>
+                    <div class="filter-select">
+                        <span>Período</span>
+                        <select>
+                            <option>Hoje</option>
+                            <option>Ontem</option>
+                            <option>7 dias</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <div class="icon-notif">
+                        <i class="fas fa-bell"></i>
+                        <span class="notif-dot"></span>
+                    </div>
+                    <div class="user-profile">
+                        </div>
+                </div>
+            </header>
+
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="card-header">
+                        <span>Vendas realizadas</span>
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <span class="stat-value">R$ 0,00</span>
+                </div>
+                <div class="stat-card">
+                    <div class="card-header">
+                        <span>Quantidade de vendas</span>
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <span class="stat-value">0</span>
+                </div>
+            </section>
+
+            <section class="payment-table-card">
+                <div class="card-header-table">
+                    <span class="col-main">Meios de Pagamento</span>
+                    <span class="col-secondary">Conversão</span>
+                    <span class="col-secondary">Valor <i class="fas fa-sort-down"></i></span>
+                </div>
+                <ul class="payment-list">
+                    <li>
+                        <div class="payment-method"><i class="fas fa-qrcode"></i> Pix</div>
+                        <span>0%</span>
+                        <span>R$ 0,00</span>
+                    </li>
+                    <li>
+                        <div class="payment-method"><i class="fas fa-barcode"></i> Boleto</div>
+                        <span>0%</span>
+                        <span>R$ 0,00</span>
+                    </li>
+                    <li>
+                        <div class="payment-method"><i class="fas fa-credit-card"></i> Cartão de crédito</div>
+                        <span>0%</span>
+                        <span>R$ 0,00</span>
+                    </li>
+                    <li>
+                        <div class="payment-method"><i class="fas fa-money-bill-wave"></i> Pic Pay</div>
+                        <span>0%</span>
+                        <span>R$ 0,00</span>
+                    </li>
+                    <li>
+                        <div class="payment-method"><i class="fab fa-apple-pay"></i> Apple Pay</div>
+                        <span>0%</span>
+                        <span>R$ 0,00</span>
+                    </li>
+                    <li>
+                        <div class="payment-method"><i class="fab fa-google-pay"></i> Google Pay</div>
+                        <span>0%</span>
+                        <span>R$ 0,00</span>
+                    </li>
+                    <li>
+                        <div class="payment-method"><i class="fas fa-shield-alt"></i> 3DS</div>
+                        <span>0%</span>
+                        <span>R$ 0,00</span>
+                    </li>
+                    <li>
+                        <div class="payment-method"><i class="fas fa-bolt"></i> PIX Automático</div>
+                        <span>0%</span>
+                        <span>R$ 0,00</span>
+                    </li>
+                </ul>
+            </section>
+        </main>
+
+        <aside class="sidebar-right">
+            <div class="info-card">
+                <div class="info-content">
+                    <span>Abandono C.</span>
+                    <strong>0</strong>
+                </div>
+                <i class="fas fa-ellipsis-h"></i>
+            </div>
+            <div class="info-card">
+                <div class="info-content">
+                    <span>Reembolso</span>
+                    <strong>0%</strong>
+                </div>
+                <i class="fas fa-ellipsis-h"></i>
+            </div>
+            <div class="info-card">
+                <div class="info-content">
+                    <span>Charge Back</span>
+                    <strong>0%</strong>
+                </div>
+                <i class="fas fa-ellipsis-h"></i>
+            </div>
+            <div class="info-card">
+                <div class="info-content">
+                    <span>MED</span>
+                    <strong>0%</strong>
+                </div>
+                <i class="fas fa-ellipsis-h"></i>
+            </div>
+        </aside>
+
+    </div>
+
+</body>
+</html>

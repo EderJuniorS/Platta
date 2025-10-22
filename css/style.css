@@ -1,0 +1,142 @@
+/* Configurações Globais e de Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+}
+
+/* Estilos do Cabeçalho (Header) */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    width: 100%;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.logo strong {
+    font-weight: 700;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 12px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #e0e0e0;
+    background-color: #1c1c1c;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.main-nav a:hover {
+    background-color: #333333;
+}
+
+.header-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-outline {
+    border: 1px solid #444444;
+}
+
+.btn-outline:hover {
+    background-color: #222222;
+    border-color: #666666;
+}
+
+.btn-filled {
+    background-color: #e0e0e0;
+    color: #000000;
+    border: 1px solid #e0e0e0;
+}
+
+.btn-filled:hover {
+    background-color: #ffffff;
+}
+
+
+/* Estilos do Conteúdo Principal (Hero Section) */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 60px;
+    gap: 50px;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 750px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 24px;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    color: #a0a0a0;
+    line-height: 1.6;
+    margin-bottom: 32px;
+}
+
+.btn-cta {
+    background-color: #1c1c1c;
+    color: #e0e0e0;
+    padding: 16px 32px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.btn-cta:hover {
+    background-color: #333333;
+}
+
+/* Estilos da Imagem e Notificações */
+.hero-image-container {
+    flex: 1;
+    position: relative; /* Essencial para posicionar as notificações sobre a imagem */
+    display: flex;
+    justify-content: right;
+    align-items: right;
+}
+
+.central-image {
+    max-width: 400px;
+    opacity: 0.9;
+}
