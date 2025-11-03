@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Meu Perfil - Platta</title>
+
+    <link rel="stylesheet" href="css/dashboard.css"> 
+    <link rel="stylesheet" href="css/usuario.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <div class="dashboard-container">
+
+        <aside class="sidebar-left">
+            <header class="sidebar-header">
+                <div class="logo">
+                    <img src="img/Logo.png" alt="Platta Logo"> <span>Platta</span> 
+                </div>
+                <i class="fas fa-search"></i>
+            </header>
+
+            <div class="faturamento-card">
+                <span>Faturamento</span>
+                <strong>R$ 0,00 / R$ 10K</strong>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 0%;"></div>
+                </div>
+                <span>0%</span>
+            </div>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li> 
+                    <li><a href="#"><i class="fas fa-box-open"></i> Produtos</a></li>
+                    <li><a href="#"><i class="fas fa-store"></i> Vitrine <span class="badge badge-green">Novo</span></a></li>
+                    <li><a href="#"><i class="fas fa-tag"></i> Minhas Vendas</a></li>
+                    <li><a href="#"><i class="fas fa-signature"></i> Assinaturas</a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i> Relatórios</a></li>
+                    <li><a href="#"><i class="fas fa-handshake"></i> Afiliados</a></li>
+                    <li><a href="#"><i class="fas fa-wallet"></i> Financeiro</a></li>
+                    <li><a href="#"><i class="fas fa-cogs"></i> Integrações</a></li>
+                    <li><a href="#"><i class="fas fa-ticket-alt"></i> Cupons</a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> Quiz <span class="badge badge-green">Novo</span></a></li>
+                    <li><a href="#"><i class="fas fa-filter"></i> Funileiro <span class="badge badge-blue">Beta</span></a></li>
+                    </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            
+            <header class="main-header">
+                <div class="header-left">
+                    <h2>Meu Perfil</h2> 
+                </div>
+                <div class="header-center">
+                    <div class="filter-select">
+                        <select> <option>Tipo</option> </select>
+                    </div>
+                    <div class="filter-select">
+                        <select> <option>Produtos</option> </select>
+                    </div>
+                    <div class="filter-select">
+                        <span>Período</span>
+                        <select>
+                            <option>Hoje</option> <option>Ontem</option> <option>7 dias</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked> <span class="slider"></span>
+                    </label>
+                    <div class="icon-notif">
+                        <i class="fas fa-bell"></i> <span class="notif-dot"></span>
+                    </div>
+                    <div class="profile-container"> 
+                        <div class="user-profile" id="userProfileDisplay">
+                            </div>
+                        <div class="profile-dropdown" id="profileDropdown">
+                            <a href="usuario.html">
+                                <i class="fas fa-user-circle"></i> Perfil
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="profile-page-container">
+                <div class="profile-card">
+                    <div class="profile-picture-section">
+                        <div class="profile-picture-placeholder" id="profilePicPlaceholder">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <button class="add-picture-btn">+</button>
+                    </div>
+
+                    <h2 id="userName">Carregando...</h2>
+                    <p class="user-email" id="userEmail">...</p>
+
+                    <div class="profile-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Verificação</span>
+                            <span class="detail-value verified" id="verificationStatus">
+                                Dados verificados <i class="fas fa-info-circle"></i>
+                            </span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Documento</span>
+                            <span class="detail-value" id="userDocument">...</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Telefone</span>
+                            <span class="detail-value" id="userPhone">...</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Idioma</span>
+                            <span class="detail-value" id="userLanguage">Português (BR)</span> 
+                        </div>
+                    </div>
+
+                    <button class="update-profile-btn">
+                        <i class="fas fa-user-edit"></i> Atualizar perfil
+                    </button>
+                </div>
+            </div>
+            </main>
+
+        </div> <script src="js/usuario.js"></script> 
+</body>
+</html>
