@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platta - Apps (Integrações)</title>
+    <link rel="stylesheet" href="css/integracoes.css"> 
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <div class="dashboard-container">
+
+        <aside class="sidebar-left">
+            <header class="sidebar-header">
+                <div class="logo">
+                    <img src="img/Logo.png" alt="Platta Logo"> <span>Platta</span> 
+                </div>
+                <i class="fas fa-search"></i>
+            </header>
+
+            <div class="faturamento-card">
+                <span>Faturamento</span>
+                <strong>R$ 0,00 / R$ 10K</strong>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 0%;"></div>
+                </div>
+                <span>0%</span>
+            </div>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="produtos.html"><i class="fas fa-box-open"></i> Produtos</a></li>
+                    <li><a href="vitrine.html"><i class="fas fa-store"></i> Vitrine <span class="badge badge-green">Novo</span></a></li>
+                    <li><a href="vendas.html"><i class="fas fa-tag"></i> Minhas Vendas</a></li>
+                    <li><a href="assinaturas.html"><i class="fas fa-signature"></i> Assinaturas</a></li>
+                    <li><a href="relatorios.html"><i class="fas fa-chart-line"></i> Relatórios</a></li>
+                    <li><a href="afiliados.html"><i class="fas fa-handshake"></i> Afiliados</a></li>
+                    <li><a href="financeiro.html"><i class="fas fa-wallet"></i> Financeiro</a></li>
+                    <li class="active"><a href="integracoes.html"><i class="fas fa-cogs"></i> Integrações</a></li>
+                    <li><a href="cupons.html"><i class="fas fa-ticket-alt"></i> Cupons</a></li>
+                    <li><a href="quiz.html"><i class="fas fa-question-circle"></i> Quiz <span class="badge badge-green">Novo</span></a></li>
+                    <li><a href="#"><i class="fas fa-filter"></i> Funileiro <span class="badge badge-blue">Beta</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="main-header">
+                <div class="header-left">
+                    <h2>Apps</h2>
+                </div>
+
+                <div class="header-right">
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked> <span class="slider"></span>
+                    </label>
+                    <div class="icon-notif">
+                        <i class="fas fa-bell"></i> <span class="notif-dot"></span>
+                    </div>
+                    <div class="profile-container"> 
+                        <div class="user-profile" id="userProfileDisplay"></div>
+                        <div class="profile-dropdown" id="profileDropdown">
+                            <a href="usuario.html">
+                                <i class="fas fa-user-circle"></i> Perfil
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="apps-container">
+                <div class="apps-grid">
+                    <div class="app-card">
+                        <img src="img/integracoes/google-ads.png" alt="Logo Google Ads">
+                        <span class="logo-text">Google Ads</span>
+                    </div>
+                    <div class="app-card">
+                        <img src="img/integracoes/facebook-ads.png" alt="Logo Facebook Ads">
+                        <span class="logo-text">Facebook Ads</span>
+                    </div>
+                    <div class="app-card"> <img src="img/integracoes/tiktok-ads.png" alt="Logo TikTok Ads">
+                        <span class="logo-text">TikTok Ads</span>
+                    </div>
+                    <div class="app-card">
+                        <img src="img/integracoes/telegram.png" alt="Logo Telegram">
+                        <span class="logo-text">Telegram</span>
+                    </div>
+
+                    <div class="app-card">
+                        <img src="img/integracoes/whatsapp.png" alt="Logo WhatsApp">
+                        <span class="logo-text">WhatsApp</span>
+                    </div>
+                    <div class="app-card">
+                        <img src="img/integracoes/utmify.png" alt="Logo UTMify">
+                        <span class="logo-text">Utmify</span>
+                    </div>
+                    <div class="app-card">
+                        <img src="img/integracoes/google-analytics.png" alt="Logo Google Analytics">
+                        <span class="logo-text">Google Analytics</span>
+                    </div>
+                    <div class="app-card">
+                        <img src="img/integracoes/voxuy.png" alt="Logo Voxuy">
+                        <span class="logo-text">Voxuy</span>
+                    </div>
+
+                    <div class="app-card">
+                        <img src="img/integracoes/webhook.png" alt="Logo Webhook">
+                        <span class="logo-text">Webhook</span>
+                    </div>
+                </div>
+            </div>
+            </main>
+        <aside class="sidebar-right">
+            <video width="100%" height="auto" autoplay loop muted playsinline>
+                <source src="video/caveira.mp4" type="video/mp4">
+                Seu navegador não suporta a tag de vídeo.
+            </video>
+        </aside>
+
+    </div> <script src="js/dashboard.js"></script>
+</body>
+</html>

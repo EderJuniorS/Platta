@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links do Produto - Platta</title>
+    <link rel="stylesheet" href="css/dashboard.css"> 
+    <link rel="stylesheet" href="css/produtos.css">
+    <link rel="stylesheet" href="css/links.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="dark-theme"> 
+    
+    <div class="dashboard-container">
+
+        <aside class="sidebar-left">
+            <header class="sidebar-header">
+                <div class="logo">
+                    <img src="img/Logo.png" alt="Platta Logo"> <span>Platta</span> 
+                </div>
+                <i class="fas fa-search"></i>
+            </header>
+
+            <div class="faturamento-card">
+                <span>Faturamento</span>
+                <strong>R$ 0,00 / R$ 10K</strong>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 0%;"></div>
+                </div>
+                <span>0%</span>
+            </div>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li> 
+                    <li class="active"><a href="produtos.html"><i class="fas fa-box-open"></i> Produtos</a></li> 
+                    <li><a href="vitrine.html"><i class="fas fa-store"></i> Vitrine <span class="badge badge-green">Novo</span></a></li>
+                    <li><a href="vendas.html"><i class="fas fa-tag"></i> Minhas Vendas</a></li>
+                    <li><a href="assinaturas.html"><i class="fas fa-signature"></i> Assinaturas</a></li>
+                    <li><a href="relatorios.html"><i class="fas fa-chart-line"></i> Relatórios</a></li>
+                    <li><a href="afiliados.html"><i class="fas fa-handshake"></i> Afiliados</a></li>
+                    <li><a href="financeiro.html"><i class="fas fa-wallet"></i> Financeiro</a></li>
+                    <li><a href="integracoes.html"><i class="fas fa-cogs"></i> Integrações</a></li>
+                    <li><a href="cupons.html"><i class="fas fa-ticket-alt"></i> Cupons</a></li>
+                    <li><a href="quiz.html"><i class="fas fa-question-circle"></i> Quiz <span class="badge badge-green">Novo</span></a></li>
+                    <li><a href="#"><i class="fas fa-filter"></i> Funileiro <span class="badge badge-blue">Beta</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="main-header">
+                <div class="header-left">
+                    <h2>
+                        <a href="produtos.html" class="btn-voltar-simple">
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                        Links do Produto
+                    </h2> 
+                </div>
+
+                <div class="header-right">
+                    <button class="btn-salvar-produto">Salvar Produto</button>
+                    
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked> <span class="slider"></span>
+                    </label>
+                    <div class="icon-notif">
+                        <i class="fas fa-bell"></i> <span class="notif-dot"></span>
+                    </div>
+                    <div class="profile-container"> 
+                        <div class="user-profile" id="userProfileDisplay"></div>
+                        <div class="profile-dropdown" id="profileDropdown">
+                            <a href="usuario.html">
+                                <i class="fas fa-user-circle"></i> Perfil
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="links-container">
+                <nav class="product-tabs">
+                    <ul>
+                        <li><a href="#">Geral</a></li>
+                        <li><a href="#">Configurações</a></li>
+                        <li><a href="#">Order Bump</a></li>
+                        <li><a href="#">Upsell / Downsell</a></li>
+                        <li><a href="#">Checkout</a></li>
+                        <li><a href="#">Co-Produção</a></li>
+                        <li><a href="#">Cupons</a></li>
+                        <li><a href="#">Afiliados</a></li>
+                        <li><a href="#">Cakto Members</a></li>
+                        <li class="active"><a href="#">Links</a></li>
+                    </ul>
+                </nav>
+
+                <div class="links-list-container">
+                    <div class="links-header-bar">
+                        <div class="search-bar">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Pesquisar">
+                        </div>
+                        <button class="btn-add-link">
+                            <i class="fas fa-plus"></i> Adicionar Link
+                        </button>
+                    </div>
+
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox"></th>
+                                    <th>Nome</th>
+                                    <th>URL</th>
+                                    <th>Oferta</th>
+                                    <th>Tipo</th>
+                                    <th>Preço</th>
+                                    <th>Status</th>
+                                    <th></th> 
+                                </tr>
+                            </thead>
+                            <tbody id="links-table-body">
+                                <tr>
+                                    <td colspan="8" class="no-data">Carregando links...</td> 
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="pagination">
+                        <button class="page-nav disabled"><i class="fas fa-chevron-left"></i></button>
+                        <button class="page-number active">1</button>
+                        <button class="page-nav"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    
+                </div>
+            </div>
+            </main>
+
+        <aside class="sidebar-right">
+             <video width="100%" height="auto" autoplay loop muted playsinline>
+                <source src="video/caveira.mp4" type="video/mp4">
+                Seu navegador não suporta a tag de vídeo.
+            </video>
+        </aside>
+
+    </div> 
+    <script src="js/dashboard.js"></script> 
+    <script src="js/links.js" defer></script> 
+</body>
+</html>

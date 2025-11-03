@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Produto - Platta</title>
+    <link rel="stylesheet" href="css/dashboard.css"> 
+    <link rel="stylesheet" href="css/produtos.css"> 
+    <link rel="stylesheet" href="css/editar-produto.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="dark-theme"> 
+    
+    <div class="dashboard-container">
+
+        <aside class="sidebar-left">
+            <header class="sidebar-header">
+                <div class="logo">
+                    <img src="img/Logo.png" alt="Platta Logo"> <span>Platta</span> 
+                </div>
+                <i class="fas fa-search"></i>
+            </header>
+            <div class="faturamento-card">
+                <span>Faturamento</span>
+                <strong>R$ 0,00 / R$ 10K</strong>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 0%;"></div>
+                </div>
+                <span>0%</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li> 
+                    <li class="active"><a href="produtos.html"><i class="fas fa-box-open"></i> Produtos</a></li> 
+                    <li><a href="vitrine.html"><i class="fas fa-store"></i> Vitrine <span class="badge badge-green">Novo</span></a></li>
+                    <li><a href="vendas.html"><i class="fas fa-tag"></i> Minhas Vendas</a></li>
+                    <li><a href="assinaturas.html"><i class="fas fa-signature"></i> Assinaturas</a></li>
+                    <li><a href="relatorios.html"><i class="fas fa-chart-line"></i> Relatórios</a></li>
+                    <li><a href="afiliados.html"><i class="fas fa-handshake"></i> Afiliados</a></li>
+                    <li><a href="financeiro.html"><i class="fas fa-wallet"></i> Financeiro</a></li>
+                    <li><a href="integracoes.html"><i class="fas fa-cogs"></i> Integrações</a></li>
+                    <li><a href="cupons.html"><i class="fas fa-ticket-alt"></i> Cupons</a></li>
+                    <li><a href="quiz.html"><i class="fas fa-question-circle"></i> Quiz <span class="badge badge-green">Novo</span></a></li>
+                    <li><a href="#"><i class="fas fa-filter"></i> Funileiro <span class="badge badge-blue">Beta</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="main-header">
+                <div class="header-left">
+                    <h2>
+                        <a href="produtos.html" class="btn-voltar-simple">
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                        Editar Produto
+                    </h2> 
+                </div>
+                <div class="header-right">
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked> <span class="slider"></span>
+                    </label>
+                    <div class="icon-notif">
+                        <i class="fas fa-bell"></i> <span class="notif-dot"></span>
+                    </div>
+                    <div class="profile-container"> 
+                        <div class="user-profile" id="userProfileDisplay"></div>
+                        <div class="profile-dropdown" id="profileDropdown">
+                            <a href="usuario.html">
+                                <i class="fas fa-user-circle"></i> Perfil
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="links-container">
+                <nav class="product-tabs">
+                    <ul>
+                        <li class="active"><a href="#">Geral</a></li>
+                        <li><a href="#">Configurações</a></li>
+                        <li><a href="#">Order Bump</a></li>
+                        <li><a href="#">Upsell / Downsell</a></li>
+                        <li><a href="#">Checkout</a></li>
+                        <li><a href="#">Co-Produção</a></li>
+                        <li><a href="#">Cupons</a></li>
+                        <li><a href="#">Afiliados</a></li>
+                        <li><a href="#">Cakto Members</a></li>
+                        <li><a href="links.html" id="links-tab-link">Links</a></li>
+                    </ul>
+                </nav>
+
+                <div class="edit-product-container">
+                    
+                    <!-- <aside class="edit-info-col">
+                        <div class="info-card-left">
+                            <h3>Produto</h3>
+                            <p>A aprovação do produto é instantânea...</p>
+                        </div>
+                        <div class="info-card-left">
+                            <h3>Preços</h3>
+                        </div>
+                        <div class="info-card-left">
+                            <h3>Oferta</h3>
+                        </div>
+                        <div class="info-card-left">
+                            <h3>Suporte ao cliente</h3>
+                            <p>Aprenda como preencher os dados...</p>
+                        </div>
+                    </aside> -->
+
+                    <main class="edit-form-col">
+                        <form id="edit-product-form">
+                            
+                            <div class="form-card">
+                                <div class="input-group">
+                                    <label for="product-name">Nome do Produto</label>
+                                    <input type="text" id="product-name" name="name" required>
+                                </div>
+                                <div class="input-group">
+                                    <label for="product-description">Descrição</label>
+                                    <textarea id="product-description" name="description"></textarea>
+                                </div>
+                                <div class="input-group">
+                                    <label for="product-category">Categoria</label>
+                                    <select id="product-category" name="category">
+                                        <option value="">Selecione...</option>
+                                        <option value="Negócios e Carreira">Negócios e Carreira</option>
+                                        <option value="Tecnologia">Tecnologia</option>
+                                        <option value="Saúde e Esportes">Saúde e Esportes</option>
+                                        <option value="Outro">Outro</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-card">
+                                <h3>Imagem do Produto</h3>
+                                <div class="image-uploader" id="image-uploader">
+                                    <input type="file" id="product-image-upload" accept="image/jpeg, image/png">
+                                    <div class="upload-content">
+                                        <img src="" alt="Preview" class="image-preview" id="image-preview" style="display:none;">
+                                        <div class="upload-placeholder" id="upload-placeholder">
+                                            <i class="fas fa-image"></i>
+                                            <p>Formatos aceitos: JPG ou PNG. Tamanho máximo: 10MB</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="info-box">
+                                    <i class="fas fa-info-circle"></i>
+                                    Tamanho recomendado: 300x250 pixels
+                                </div>
+                            </div>
+
+                            <div class="form-card">
+                                <div class="price-warranty-grid">
+                                    <div class="input-group">
+                                        <label for="product-price">Preço</label>
+                                        <div class="input-with-icon-left">
+                                            <span>R$</span>
+                                            <input type="text" id="product-price" name="price" placeholder="0,00" required>
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="product-warranty">Garantia</label>
+                                        <div class="select-with-icon">
+                                            <select id="product-warranty" name="warranty_days">
+                                                <option value="7">7 dias</option>
+                                                <option value="15">15 dias</option>
+                                                <option value="30">30 dias</option>
+                                            </select>
+                                            <i class="fas fa-cog"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="toggle-group">
+                                    <label class="toggle-switch-small">
+                                        <input type="checkbox" id="product-has-offers" name="has_multiple_offers">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <label for="product-has-offers">Esse produto tem diferentes ofertas</label>
+                                </div>
+                            </div>
+
+                            <div class="form-card">
+                                <div class="input-group">
+                                    <label for="offer-select">Selecione uma oferta</label>
+                                    <select id="offer-select" name="offer">
+                                        </select>
+                                </div>
+                                <div class="radio-group">
+                                    <label>Modalidade de pagamento</label>
+                                    <div class="radio-options">
+                                        <div class="radio-option">
+                                            <label for="payment-subscription">
+                                                <strong>Assinatura</strong>
+                                                <span>Cobrança recorrente</span>
+                                            </label>
+                                            <input type="radio" id="payment-subscription" name="payment-type" value="subscription">
+                                        </div>
+                                        <div class="radio-option">
+                                            <label for="payment-single">
+                                                <strong>Pagamento único</strong>
+                                                <span>Cobrar uma única vez</span>
+                                            </label>
+                                            <input type="radio" id="payment-single" name="payment-type" value="single" checked>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-card">
+                                <div class="input-group">
+                                    <label for="product-sales-page">Página de Vendas</label>
+                                    <div class="input-with-icon-left">
+                                        <i class="fas fa-link"></i>
+                                        <input type="url" id="product-sales-page" name="sales_page_url" placeholder="https://">
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="product-support-email">E-mail de suporte</label>
+                                    <div class="input-with-icon-left">
+                                        <i class="fas fa-envelope"></i>
+                                        <input type="email" id="product-support-email" name="support_email" placeholder="E-mail de suporte">
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="product-producer-name">Nome de exibição do produtor</label>
+                                    <div class="input-with-icon-left">
+                                        <i class="fas fa-user"></i>
+                                        <input type="text" id="product-producer-name" name="producer_name" placeholder="Nome de exibição">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </main>
+                </div> 
+
+                <footer class="edit-product-footer">
+                    <button class="btn-excluir-produto" id="delete-product-button">
+                        Excluir Produto
+                    </button>
+                    <button class="btn-salvar-produto" id="save-product-button">
+                        Salvar Produto
+                    </button>
+                </footer>
+
+            </div> 
+        </main>
+
+        <aside class="sidebar-right">
+             <video width="100%" height="auto" autoplay loop muted playsinline>
+                <source src="video/caveira.mp4" type="video/mp4">
+                Seu navegador não suporta a tag de vídeo.
+            </video>
+        </aside>
+
+    </div> 
+
+    <script src="js/dashboard.js"></script> 
+    <script src="js/editar-produto.js" defer></script> 
+</body>
+</html>

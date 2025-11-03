@@ -1,0 +1,420 @@
+/* Caminho: css/editar-produto.css */
+
+/* Novo estilo para o botão "Voltar" */
+.main-header h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.btn-voltar-simple {
+    color: var(--text-secondary, #9CA3AF);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.2s ease;
+}
+.btn-voltar-simple:hover {
+    color: var(--text-primary, #F9FAFB);
+}
+
+/* REMOVIDO: Estilo do .btn-salvar-produto no header */
+
+/* Ajusta o container do conteúdo */
+.links-container .product-tabs {
+    border-bottom: 1px solid var(--border-color, #374151);
+    margin-bottom: 24px;
+}
+.links-container .product-tabs ul {
+    gap: 24px;
+    border-bottom: none;
+    margin-bottom: 0;
+    overflow-x: auto; 
+    white-space: nowrap;
+}
+.links-container .product-tabs li a {
+    font-size: 0.9rem;
+}
+
+/* Container principal da página de edição */
+.edit-product-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 24px;
+}
+
+/* Coluna da Esquerda (Info) */
+.edit-info-col {
+    flex: 1;
+    min-width: 200px;
+    max-width: 250px;
+}
+.info-card-left {
+    margin-bottom: 30px; 
+    /* Ajuste para alinhar com os cards da direita */
+    min-height: 100px;
+}
+.info-card-left h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary, #F9FAFB);
+    margin-bottom: 12px;
+}
+.info-card-left p {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #9CA3AF);
+    line-height: 1.6;
+}
+
+/* Coluna da Direita (Formulário) */
+.edit-form-col {
+    flex: 3;
+}
+
+.form-card {
+    background-color: var(--bg-dark-secondary, #1F2937);
+    border: 1px solid var(--border-color, #374151);
+    border-radius: 12px;
+    padding: 24px 30px;
+    margin-bottom: 24px;
+}
+.form-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Estilos dos campos */
+.input-group {
+    margin-bottom: 16px;
+}
+.input-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary, #9CA3AF);
+    margin-bottom: 8px;
+}
+.input-group input[type="text"],
+.input-group input[type="email"],
+.input-group input[type="url"],
+.input-group textarea,
+.input-group select {
+    width: 100%;
+    background-color: var(--bg-dark-primary, #111827);
+    border: 1px solid var(--border-color, #374151);
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: var(--text-primary, #F9FAFB);
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+}
+.input-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus {
+    outline: none;
+    border-color: var(--accent-green, #10B981);
+}
+
+/* Estilos do Image Uploader */
+.image-uploader {
+    border: 2px dashed var(--border-color, #374151);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    position: relative; 
+}
+.image-uploader:hover {
+    border-color: var(--accent-green, #10B981);
+}
+.image-uploader input[type="file"] {
+    display: none; 
+}
+.upload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.image-preview {
+    max-width: 100%;
+    max-height: 250px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.upload-placeholder i {
+    font-size: 2.5rem;
+    color: var(--text-muted, #6B7280);
+    margin-bottom: 12px;
+}
+.upload-placeholder p {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #9CA3AF);
+}
+
+.info-box {
+    background-color: rgba(59, 130, 246, 0.1);
+    border: 1px solid #3B82F6;
+    color: #93C5FD;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+}
+
+/* =================================== */
+/* == NOVOS ESTILOS (DA IMAGEM) == */
+/* =================================== */
+
+/* Grid de Preço e Garantia */
+.price-warranty-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Input com ícone à esquerda (R$, link, etc) */
+.input-with-icon-left {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-dark-primary, #111827);
+    border: 1px solid var(--border-color, #374151);
+    border-radius: 8px;
+    padding-left: 16px;
+}
+.input-with-icon-left i,
+.input-with-icon-left span {
+    color: var(--text-muted, #6B7280);
+}
+
+/* ESTA É A MUDANÇA PRINCIPAL */
+/* Removemos a borda, padding, margin, e fundo de TODOS os inputs DENTRO do wrapper */
+.input-with-icon-left input[type="url"],
+.input-with-icon-left input[type="email"],
+.input-with-icon-left input[type="text"] {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding: 12px; /* Zera o padding, exceto o da esquerda */
+    margin: 0;
+    flex-grow: 1;
+    background-color: transparent; /* Importante: remove o fundo do input */
+
+    /* Garante que ele puxe os estilos de fonte corretos */
+    color: var(--text-primary, #F9FAFB);
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Regra de foco para os inputs normais (sem ícone) */
+.input-group input[type="text"]:focus,
+.input-group textarea:focus,
+.input-group select:focus {
+    outline: none;
+    border-color: var(--accent-green, #10B981);
+}
+
+/* NOVA REGRA: Adiciona o foco ao WRAPPER quando o input dentro dele é focado */
+.input-with-icon-left:focus-within {
+    outline: none;
+    border-color: var(--accent-green, #10B981);
+}
+
+.input-with-icon-left input {
+    border: none;
+    padding-left: 12px;
+    flex-grow: 1;
+}
+.input-with-icon-left input:focus {
+    outline: none;
+}
+
+/* Select de Garantia com Ícone */
+.select-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.select-with-icon select {
+    padding-right: 40px; /* Espaço para o ícone */
+    appearance: none;
+    -webkit-appearance: none;
+    /* (Remove a seta padrão do select) */
+}
+.select-with-icon i {
+    position: absolute;
+    right: 16px;
+    color: var(--text-muted, #6B7280);
+    pointer-events: none; /* Deixa o clique passar para o select */
+}
+
+
+/* Toggle Pequeno (Diferentes Ofertas) */
+.toggle-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px; /* Aumenta a margem */
+}
+.toggle-group .toggle-switch-small {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+}
+.toggle-group .toggle-switch-small input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.toggle-group .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--border-color, #374151);
+    transition: .4s;
+    border-radius: 34px;
+}
+.toggle-group .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+.toggle-group input:checked + .slider {
+    background-color: var(--accent-green, #10B981);
+}
+.toggle-group input:checked + .slider:before {
+    transform: translateX(16px);
+}
+.toggle-group label:last-of-type {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary, #F9FAFB);
+    cursor: pointer;
+}
+
+/* Grupo de Rádio (Modalidade de Pagamento) */
+.radio-group {
+    margin-top: 20px;
+}
+.radio-group > label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary, #9CA3AF);
+    margin-bottom: 12px;
+    display: block;
+}
+.radio-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.radio-option {
+    border: 1px solid var(--border-color, #374151);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    align-items: center; /* Alinha verticalmente */
+    justify-content: space-between; /* Espaça o label e o input */
+    cursor: pointer;
+}
+.radio-option input[type="radio"] {
+    /* Esconde o rádio padrão */
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-color, #374151);
+    border-radius: 50%;
+    margin-left: 12px;
+    flex-shrink: 0;
+    position: relative;
+    cursor: pointer;
+}
+.radio-option input[type="radio"]:checked {
+    border-color: var(--accent-green, #10B981);
+}
+.radio-option input[type="radio"]:checked::after {
+    /* Círculo interno */
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent-green, #10B981);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.radio-option label {
+    font-size: 0.95rem;
+    color: var(--text-primary, #F9FAFB);
+    cursor: pointer;
+}
+.radio-option label strong {
+    font-weight: 600;
+}
+.radio-option label span {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-secondary, #9CA3AF);
+    margin-top: 4px;
+}
+
+/* NOVO: Footer com botões Excluir/Salvar */
+.edit-product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0; /* Espaçamento acima e abaixo */
+    margin-top: 10px;
+}
+
+.btn-excluir-produto {
+    background-color: #EF4444; /* Vermelho */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn-excluir-produto:hover {
+    background-color: #DC2626; /* Vermelho mais escuro */
+}
+
+.btn-salvar-produto {
+    background-color: var(--accent-green, #10B981);
+    color: var(--text-primary, #F9FAFB);
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn-salvar-produto:hover {
+    background-color: #0d926a;
+}
+.btn-salvar-produto:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}

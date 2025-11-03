@@ -1,0 +1,627 @@
+/* --- Variáveis de Cor (Dark Mode) - DO SEU DASHBOARD --- */
+:root {
+    --bg-dark-primary: #111827;  /* Fundo principal mais escuro */
+    --bg-dark-secondary: #1F2937; /* Fundo dos cards e sidebars */
+    --border-color: #374151;
+    --text-primary: #F9FAFB;
+    --text-secondary: #9CA3AF;
+    --text-muted: #6B7280;
+    --accent-green: #10B981;
+    --accent-blue: #3B82F6;
+    --progress-gradient: linear-gradient(90deg, #FBBF24, #F59E0B);
+
+    /* --- NOVAS Variáveis (da financeiro.css) --- */
+    --accent-yellow: #EAB308;
+    --alert-bg: #4A2C13;
+    --alert-text: #FDBA74;
+    --alert-border: #F97316;
+
+    /* Variáveis do layout antigo (mapeadas para as novas) */
+    --bg-page: var(--bg-dark-primary);
+    --bg-card: var(--bg-dark-secondary);
+    --primary-green: var(--accent-green);
+    
+    /* Variáveis do seu tema de afiliados (mapeadas) */
+    --status-green-text: var(--accent-green);
+    --status-green-bg: rgba(16, 185, 129, 0.2);
+
+    /* Variáveis de layout genéricas (mantidas) */
+    --font-family: 'Inter', system-ui, sans-serif;
+    --card-border-radius: 12px;
+    --input-border-radius: 8px;
+    --button-border-radius: 8px;
+}
+
+/* --- Reset Básico --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark-primary);
+    color: var(--text-primary);
+}
+
+/* --- Layout Principal --- */
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 260px 1fr 300px; /* Sidebar | Main | Sidebar */
+    min-height: 100vh;
+}
+
+/* ======================= */
+/* 1. SIDEBAR ESQUERDA     */
+/* ======================= */
+.sidebar-left {
+    background-color: var(--bg-dark-secondary);
+    padding: 24px;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-header .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.sidebar-header .logo img { height: 24px; }
+.sidebar-header .fa-search { font-size: 1.1rem; color: var(--text-secondary); }
+
+.faturamento-card {
+    background-color: var(--bg-dark-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px;
+    position: relative;
+}
+.faturamento-card span:first-child { font-size: 0.9rem; color: var(--text-secondary); }
+.faturamento-card strong { font-size: 1rem; font-weight: 600; display: block; margin: 4px 0; }
+.faturamento-card span:last-child {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+.progress-bar {
+    height: 100%;
+    background: var(--progress-gradient);
+    border-radius: 4px;
+}
+
+.main-nav ul { list-style: none; }
+.main-nav li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+    transition: all 0.2s ease;
+}
+.main-nav li a:hover {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+}
+/* Estilo ativo agora usa a variável do seu tema */
+.main-nav li.active a {
+    background-color: var(--accent-green);
+    color: #fff;
+}
+.main-nav li a i { width: 20px; text-align: center; }
+
+.badge {
+    margin-left: auto;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+.badge-green { background-color: rgba(16, 185, 129, 0.2); color: var(--accent-green); }
+.badge-blue { background-color: rgba(59, 130, 246, 0.2); color: var(--accent-blue); }
+
+/* ======================= */
+/* 2. CONTEÚDO PRINCIPAL   */
+/* ======================= */
+.main-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* Adicionado para permitir scroll apenas no conteúdo */
+    overflow-y: auto; 
+    height: 100vh;
+}
+
+.main-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 20px;
+    /* Fixa o header no topo do scroll */
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-dark-primary); /* Garante que não fique transparente */
+    padding-bottom: 20px; /* Adiciona espaço para não colar no conteúdo */
+    z-index: 10;
+}
+.main-header h2 { font-size: 1.8rem; font-weight: 700; }
+
+.header-center {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+}
+.filter-select {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+.filter-select span { font-size: 0.9rem; color: var(--text-secondary); }
+.filter-select select {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.filter-select select:focus { outline: none; }
+.filter-select option { background-color: var(--bg-dark-secondary); }
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+}
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--border-color);
+    border-radius: 22px;
+    transition: .4s;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: var(--text-primary);
+    border-radius: 50%;
+    transition: .4s;
+}
+.toggle-switch input:checked + .slider { background-color: var(--accent-blue); }
+.toggle-switch input:checked + .slider:before { transform: translateX(18px); }
+
+.icon-notif { position: relative; }
+.icon-notif .fa-bell { font-size: 1.2rem; color: var(--text-secondary); }
+.notif-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #EF4444;
+    border: 1px solid var(--bg-dark-primary);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/* User Profile */
+.user-profile {
+    width: 32px;
+    height: 32px;
+    background-color: #4B5563;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    overflow: hidden;
+}
+.user-profile:hover { opacity: 0.9; }
+
+/* Profile Dropdown */
+.profile-container {
+    position: relative;
+    display: inline-block;
+}
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    background-color: var(--bg-dark-secondary);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+    z-index: 10;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    right: 0;
+    top: 100%;
+    margin-top: 8px;
+}
+.profile-dropdown.show { display: block; }
+.profile-dropdown a {
+    color: var(--text-secondary);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.profile-dropdown a i { width: 16px; text-align: center; }
+.profile-dropdown a:hover {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+
+/* ======================= */
+/* 3. SIDEBAR DIREITA      */
+/* ======================= */
+.sidebar-right {
+    background-color: var(--bg-dark-secondary);
+    padding: 24px;
+    border-left: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+} 
+.sidebar-right video {
+    max-width: 100%; 
+    height: auto;   
+    border-radius: 8px; 
+    mix-blend-mode: screen; 
+}
+
+/* ================================== */
+/* --- INÍCIO: ESTILOS DE AFILIADOS --- */
+/* ================================== */
+
+.affiliates-container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+.card {
+    background-color: var(--bg-dark-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--card-border-radius);
+    padding: 1.5rem;
+}
+.tabs {
+    display: flex;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.tab-item {
+    font-family: var(--font-family);
+    text-decoration: none;
+    color: var(--text-secondary);
+    padding-bottom: 1rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+.tab-item:hover {
+    color: var(--text-primary);
+}
+.tab-item.active {
+    color: var(--text-primary);
+    border-bottom-color: var(--accent-green);
+    font-weight: 600;
+}
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.search-bar {
+    position: relative;
+    flex-grow: 1;
+    min-width: 250px;
+}
+.search-bar svg {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--text-secondary);
+}
+.search-bar input {
+    width: 100%;
+    background-color: var(--bg-dark-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--input-border-radius);
+    padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+    font-family: var(--font-family);
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+.search-bar input::placeholder {
+    color: var(--text-secondary);
+}
+.button-group {
+    display: flex;
+    gap: 0.75rem;
+}
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1rem;
+    font-family: var(--font-family);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--button-border-radius);
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+.btn svg {
+    width: 1.15rem;
+    height: 1.15rem;
+}
+.btn:hover {
+    opacity: 0.9;
+}
+.btn-primary {
+    background-color: var(--accent-green);
+    color: var(--text-primary);
+}
+.btn-secondary {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+.table-wrapper {
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+}
+th, td {
+    padding: 1rem;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+thead {
+    border-bottom: 1px solid var(--border-color);
+}
+th {
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+tbody tr {
+    border-bottom: 1px solid var(--border-color);
+}
+tbody tr:last-child {
+    border-bottom: none;
+}
+td {
+    color: var(--text-primary);
+}
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    background-color: var(--bg-page);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+}
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.status-badge.active {
+    background-color: var(--status-green-bg);
+    color: var(--status-green-text);
+}
+.action-menu {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    padding-top: 1.5rem;
+}
+.pagination .arrow {
+    color: var(--text-secondary);
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: color 0.2s;
+}
+.pagination .arrow:hover {
+    color: var(--text-primary);
+}
+.pagination .page-number {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: background-color 0.2s, color 0.2s;
+}
+.pagination .page-number.active {
+    background-color: var(--accent-green);
+    color: var(--text-primary);
+}
+.pagination .page-number:not(.active):hover {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+}
+.no-data {
+    text-align: center;
+    color: var(--text-secondary);
+    font-style: italic;
+    padding: 2rem;
+}
+
+/* ================================== */
+/* --- INÍCIO: ESTILOS FINANCEIRO --- */
+/* (Novos estilos adicionados)       */
+/* ================================== */
+
+.financial-container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Seção Superior (Cards + Botão) */
+.top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap; /* Para telas menores */
+}
+
+.stats-cards {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap; /* Para telas menores */
+    flex-grow: 1; /* Permite que os cards cresçam */
+}
+
+.stat-card {
+    background-color: var(--bg-dark-secondary); /* Mapeado para o tema */
+    border-radius: var(--card-border-radius);
+    padding: 1.5rem;
+    position: relative;
+    border-left: 4px solid transparent; /* Borda base */
+    min-width: 250px; /* Largura mínima para cada card */
+    flex: 1; /* Faz os cards crescerem igualmente */
+    border: 1px solid var(--border-color); /* Adicionado para consistência */
+}
+
+.stat-card.available {
+    border-left-color: var(--accent-green);
+}
+.stat-card.pending {
+    border-left-color: var(--accent-yellow);
+}
+
+.stat-card span {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.stat-card strong {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+    color: var(--text-primary);
+}
+
+.stat-card .icon-eye {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 24px;
+    height: 24px;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+/* Botão de Saque (usa .btn e .btn-primary existentes, mas ajusta padding se necessário) */
+.top-section .btn-primary {
+    padding: 0.75rem 1.5rem; /* Padding específico do botão de saque */
+}
+
+
+/* Caixa de Alerta */
+.alert-box {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    border-radius: var(--card-border-radius);
+    margin-top: 2rem;
+}
+
+.alert-box.warning {
+    background-color: var(--alert-bg);
+    color: var(--alert-text);
+    border: 1px solid var(--alert-border);
+    border-left-width: 4px; /* Destaque na borda esquerda */
+}
+
+.alert-box svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0; /* Impede que o ícone seja espremido */
+    color: var(--alert-text); /* Garante que o SVG pegue a cor do texto */
+}
+
+.alert-box span {
+    font-weight: 500;
+    font-size: 0.9rem;
+}

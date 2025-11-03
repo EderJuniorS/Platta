@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Platta</title>
+    <link rel="stylesheet" href="css/checkout.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="checkout-container">
+
+        <aside class="order-summary">
+            <h2>Resumo do Pedido</h2>
+            
+            <div class="product-item">
+                <img src="" alt="Produto" id="product-image"> 
+                <h3 id="product-name">Carregando...</h3>
+            </div>
+            
+            <div class="cost-item">
+                <span>SubTotal:</span>
+                <span id="subtotal-display">R$ 0,00</span>
+            </div>
+            
+            <div class="cost-item total">
+                <span>Total:</span>
+                <span id="total-display">R$ 0,00</span>
+            </div>
+        </aside>
+
+        <main class="checkout-form">
+            <h2>Seus Dados</h2>
+            
+            <form id="checkoutForm">
+                <div class="input-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" placeholder="Digite seu nome" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="Digite seu email" required>
+                </div>
+                <div class="input-group">
+                    <label for="celular">Celular</label>
+                    <input type="tel" id="celular" placeholder="(00) 00000-0000" required maxlength="15">
+                </div>
+                <div class="input-group">
+                    <label for="cpf">CPF</label>
+                    <input type="text" id="cpf" placeholder="000.000.000-00" required maxlength="14">
+                </div>
+                
+                <button type="submit" class="btn-continue">Finalizar Pagamento</button>
+            </form>
+        </main>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/checkout.js" defer></script> 
+
+</body>
+</html>

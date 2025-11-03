@@ -1,0 +1,267 @@
+/* --- Container Principal --- */
+.sales-container {
+    width: 100%;
+    max-width: 1400px; /* Ajuste conforme necessário */
+    margin: 0 auto;
+}
+
+/* --- Cabeçalho da Página --- */
+.sales-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.sales-header h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+.btn-export {
+    background-color: var(--bg-dark-secondary, #1F2937);
+    border: 1px solid var(--border-color, #374151);
+    color: var(--text-secondary, #9CA3AF);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+.btn-export:hover {
+    border-color: var(--text-secondary, #9CA3AF);
+    color: var(--text-primary, #F9FAFB);
+}
+.btn-export i {
+    font-size: 0.7rem; /* Ícone de seta menor */
+}
+
+/* --- Grade de Visão Geral --- */
+.stats-overview-grid {
+    display: grid;
+    /* Grid com 6 colunas para flexibilidade */
+    grid-template-columns: repeat(6, 1fr); 
+    gap: 20px;
+    margin-bottom: 30px;
+}
+.stat-overview-card {
+    background-color: var(--bg-dark-secondary, #1F2937);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid var(--border-color, #374151);
+}
+/* Cards largos ocupam 3 colunas */
+.stat-overview-card.large {
+    grid-column: span 3;
+}
+/* Cards menores ocupam 1.5 colunas (aproximado) - ajuste com span */
+/* Como temos 6 colunas, cada card menor ocupa 6/4 = 1.5. Usaremos span 2 e 1 alternado ou span baseado no conteúdo*/
+/* Abordagem mais simples: fazer os 4 menores ocuparem as 6 colunas */
+.stat-overview-card:nth-child(3), /* Card 3 */
+.stat-overview-card:nth-child(4), /* Card 4 */
+.stat-overview-card:nth-child(5), /* Card 5 */
+.stat-overview-card:nth-child(6) { /* Card 6 */
+   grid-column: span 2; /* Ajuste para span 2, ocupando 8 colunas virtuais */
+   /* Ajuste para 4 cards na segunda linha - span 3 não funciona bem com 6 */
+   /* Vamos usar flexbox na segunda linha ou ajustar grid */
+} 
+/* Correção com Flexbox para a segunda linha se o grid ficar estranho */
+@media (min-width: 992px) { /* Aplica só em telas maiores */
+    .stats-overview-grid {
+         /* Manter grid para a primeira linha */
+         grid-template-areas: 
+            "card1 card1 card1 card2 card2 card2"
+            "card3 card3 card4 card4 card5 card5" /* Ajuste conforme layout desejado */
+            /* Ou "card3 card4 card5 card6 . ." */ ;
+    }
+     .stat-overview-card.large:nth-child(1) { grid-area: card1; }
+     .stat-overview-card.large:nth-child(2) { grid-area: card2; }
+     .stat-overview-card:nth-child(3) { grid-area: card3; grid-column: span 2; } /* Exemplo */
+     .stat-overview-card:nth-child(4) { grid-area: card4; grid-column: span 2; } /* Exemplo */
+     .stat-overview-card:nth-child(5) { grid-area: card5; grid-column: span 2; } /* Exemplo */
+     .stat-overview-card:nth-child(6) { grid-column: span 2; } /* Exemplo */
+     /* Simplificando: Usar 4 colunas no grid geral */
+     .stats-overview-grid {
+         grid-template-columns: repeat(4, 1fr);
+     }
+      .stat-overview-card.large { grid-column: span 2; } /* Largos ocupam 2 colunas */
+      .stat-overview-card:not(.large) { grid-column: span 1; } /* Menores ocupam 1 coluna */
+}
+
+.stat-overview-card .card-title {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #9CA3AF);
+    display: block;
+    margin-bottom: 12px;
+}
+.stat-overview-card .card-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.stat-overview-card .card-value {
+    font-size: 1.8rem; /* Valor destacado */
+    font-weight: 700;
+    color: var(--text-primary, #F9FAFB);
+}
+.stat-overview-card .card-main i {
+    color: var(--text-muted, #6B7280);
+    font-size: 1rem;
+}
+
+/* --- Controles de Dados --- */
+.data-controls {
+    background-color: var(--bg-dark-secondary, #1F2937);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid var(--border-color, #374151);
+    margin-bottom: 20px;
+}
+
+/* Abas */
+.sales-tabs ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid var(--border-color, #374151);
+    margin-bottom: 20px;
+}
+.sales-tabs li a {
+    display: inline-block;
+    padding: 10px 4px; /* Menos padding horizontal */
+    margin-bottom: -1px; 
+    text-decoration: none;
+    color: var(--text-secondary, #9CA3AF);
+    font-weight: 500;
+    font-size: 0.95rem;
+    border-bottom: 3px solid transparent; 
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+.sales-tabs li.active a {
+    color: var(--accent-green, #10B981); /* Texto verde */
+    border-bottom-color: var(--accent-green, #10B981); 
+}
+.sales-tabs li a:hover {
+    color: var(--text-primary, #F9FAFB);
+}
+
+/* Pesquisa e Filtro */
+.search-and-filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.search-and-filter .search-bar { /* Reutiliza estilo anterior */
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-dark-primary, #111827); 
+    border: 1px solid var(--border-color, #374151);
+    border-radius: 8px;
+    padding: 10px 14px; 
+    flex-grow: 1; /* Ocupa mais espaço */
+    max-width: 400px; 
+}
+.search-and-filter .search-bar i { color: var(--text-muted, #6B7280); margin-right: 10px; }
+.search-and-filter .search-bar input {
+    background: none; border: none; outline: none;
+    color: var(--text-primary, #F9FAFB); font-size: 0.9rem; width: 100%;
+}
+.search-and-filter .search-bar input::placeholder { color: var(--text-muted, #6B7280); }
+
+.search-and-filter .btn-filter { /* Reutiliza estilo anterior */
+    background-color: var(--bg-dark-primary, #111827);
+    border: 1px solid var(--border-color, #374151);
+    color: var(--text-secondary, #9CA3AF);
+    border-radius: 8px;
+    padding: 10px 16px; 
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+.search-and-filter .btn-filter:hover {
+    border-color: var(--text-secondary, #9CA3AF);
+    color: var(--text-primary, #F9FAFB);
+}
+
+/* --- Tabela de Vendas --- */
+.sales-table-section {
+    background-color: var(--bg-dark-secondary, #1F2937);
+    border-radius: 12px;
+    border: 1px solid var(--border-color, #374151);
+    overflow: hidden; /* Para cantos arredondados */
+}
+.sales-table-section table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.sales-table-section thead th {
+    background-color: var(--bg-dark-primary, #111827); /* Fundo do cabeçalho */
+    text-align: left;
+    padding: 14px 20px;
+    color: var(--text-secondary, #9CA3AF);
+    font-size: 0.8rem; /* Menor */
+    font-weight: 500;
+    text-transform: uppercase;
+    /* border-bottom: 1px solid var(--border-color, #374151); <-- Removido */
+}
+.sales-table-section tbody td {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color, #374151);
+    font-size: 0.9rem; /* Levemente menor */
+    font-weight: 500;
+    color: var(--text-primary, #F9FAFB);
+    vertical-align: middle; 
+}
+/* Remove borda da última linha */
+.sales-table-section tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Mensagem de "Nenhum registro" */
+.sales-table-section tbody td.no-data {
+    text-align: center;
+    color: var(--text-muted, #6B7280);
+    padding: 50px;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* --- Responsividade (Ajustes) --- */
+@media (max-width: 1200px) {
+    .stats-overview-grid {
+        /* Muda para 2 colunas */
+        grid-template-columns: repeat(2, 1fr);
+    }
+     .stat-overview-card.large,
+     .stat-overview-card:not(.large) { 
+        grid-column: span 1; /* Todos ocupam 1 coluna */
+     }
+}
+@media (max-width: 768px) {
+    .sales-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .stats-overview-grid {
+        grid-template-columns: 1fr; /* Empilha tudo */
+         .stat-overview-card.large,
+         .stat-overview-card:not(.large) { 
+            grid-column: span 1; 
+        }
+    }
+     .search-and-filter {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .search-and-filter .search-bar {
+        max-width: none;
+    }
+}

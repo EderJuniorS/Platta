@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cakto - Dashboard</title>
-    <link rel="stylesheet" href="css/dashboard.css">
+    <title>Platta - Dashboard</title> <link rel="stylesheet" href="css/dashboard.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-</head>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    </head>
 <body>
 
     <div class="dashboard-container">
@@ -19,7 +20,7 @@
         <aside class="sidebar-left">
             <header class="sidebar-header">
                 <div class="logo">
-                    <img src="img/Logo.png" alt="Platta Logo"> <span>Platta</span>
+                    <img src="img/Logo.png" alt="Platta Logo"> <span>Platta</span> 
                 </div>
                 <i class="fas fa-search"></i>
             </header>
@@ -36,16 +37,16 @@
             <nav class="main-nav">
                 <ul>
                     <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                    <li><a href="#"><i class="fas fa-box-open"></i> Produtos</a></li>
-                    <li><a href="#"><i class="fas fa-store"></i> Vitrine <span class="badge badge-green">Novo</span></a></li>
-                    <li><a href="#"><i class="fas fa-tag"></i> Minhas Vendas</a></li>
-                    <li><a href="#"><i class="fas fa-signature"></i> Assinaturas</a></li>
-                    <li><a href="#"><i class="fas fa-chart-line"></i> Relatórios</a></li>
-                    <li><a href="#"><i class="fas fa-handshake"></i> Afiliados</a></li>
-                    <li><a href="#"><i class="fas fa-wallet"></i> Financeiro</a></li>
-                    <li><a href="#"><i class="fas fa-cogs"></i> Integrações</a></li>
-                    <li><a href="#"><i class="fas fa-ticket-alt"></i> Cupons</a></li>
-                    <li><a href="#"><i class="fas fa-question-circle"></i> Quiz <span class="badge badge-green">Novo</span></a></li>
+                    <li><a href="produtos.html"><i class="fas fa-box-open"></i> Produtos</a></li>
+                    <li><a href="vitrine.html"><i class="fas fa-store"></i> Vitrine <span class="badge badge-green">Novo</span></a></li>
+                    <li><a href="vendas.html"><i class="fas fa-tag"></i> Minhas Vendas</a></li>
+                    <li><a href="assinaturas.html"><i class="fas fa-signature"></i> Assinaturas</a></li>
+                    <li><a href="relatorios.html"><i class="fas fa-chart-line"></i> Relatórios</a></li>
+                    <li><a href="afiliados.html"><i class="fas fa-handshake"></i> Afiliados</a></li>
+                    <li><a href="financeiro.html"><i class="fas fa-wallet"></i> Financeiro</a></li>
+                    <li><a href="integracoes.html"><i class="fas fa-cogs"></i> Integrações</a></li>
+                    <li><a href="cupons.html"><i class="fas fa-ticket-alt"></i> Cupons</a></li>
+                    <li><a href="quiz.html"><i class="fas fa-question-circle"></i> Quiz <span class="badge badge-green">Novo</span></a></li>
                     <li><a href="#"><i class="fas fa-filter"></i> Funileiro <span class="badge badge-blue">Beta</span></a></li>
                 </ul>
             </nav>
@@ -58,38 +59,39 @@
                 </div>
                 <div class="header-center">
                     <div class="filter-select">
-                        <select>
-                            <option>Tipo</option>
-                        </select>
+                        <select> <option>Tipo</option> </select>
                     </div>
                     <div class="filter-select">
-                        <select>
-                            <option>Produtos</option>
-                        </select>
+                        <select> <option>Produtos</option> </select>
                     </div>
                     <div class="filter-select">
                         <span>Período</span>
                         <select>
-                            <option>Hoje</option>
-                            <option>Ontem</option>
-                            <option>7 dias</option>
+                            <option>Hoje</option> <option>Ontem</option> <option>7 dias</option>
                         </select>
                     </div>
                 </div>
+
                 <div class="header-right">
                     <label class="toggle-switch">
-                        <input type="checkbox" checked>
-                        <span class="slider"></span>
+                        <input type="checkbox" checked> <span class="slider"></span>
                     </label>
                     <div class="icon-notif">
-                        <i class="fas fa-bell"></i>
-                        <span class="notif-dot"></span>
+                        <i class="fas fa-bell"></i> <span class="notif-dot"></span>
                     </div>
-                    <div class="user-profile">
+
+                    <div class="profile-container"> 
+                        <div class="user-profile" id="userProfileDisplay"></div>
+                        <div class="profile-dropdown" id="profileDropdown">
+                            <a href="usuario.html">
+                                <i class="fas fa-user-circle"></i> Perfil
+                            </a>
                         </div>
+                    </div>
                 </div>
             </header>
 
+            <!-- Informações principais (vendas realizadas no dia) -->
             <section class="stats-grid">
                 <div class="stat-card">
                     <div class="card-header">
@@ -107,6 +109,7 @@
                 </div>
             </section>
 
+            <!-- Meios de pagamentos -->
             <section class="payment-table-card">
                 <div class="card-header-table">
                     <span class="col-main">Meios de Pagamento</span>
@@ -114,82 +117,49 @@
                     <span class="col-secondary">Valor <i class="fas fa-sort-down"></i></span>
                 </div>
                 <ul class="payment-list">
-                    <li>
-                        <div class="payment-method"><i class="fas fa-qrcode"></i> Pix</div>
-                        <span>0%</span>
-                        <span>R$ 0,00</span>
-                    </li>
-                    <li>
-                        <div class="payment-method"><i class="fas fa-barcode"></i> Boleto</div>
-                        <span>0%</span>
-                        <span>R$ 0,00</span>
-                    </li>
-                    <li>
-                        <div class="payment-method"><i class="fas fa-credit-card"></i> Cartão de crédito</div>
-                        <span>0%</span>
-                        <span>R$ 0,00</span>
-                    </li>
-                    <li>
-                        <div class="payment-method"><i class="fas fa-money-bill-wave"></i> Pic Pay</div>
-                        <span>0%</span>
-                        <span>R$ 0,00</span>
-                    </li>
-                    <li>
-                        <div class="payment-method"><i class="fab fa-apple-pay"></i> Apple Pay</div>
-                        <span>0%</span>
-                        <span>R$ 0,00</span>
-                    </li>
-                    <li>
-                        <div class="payment-method"><i class="fab fa-google-pay"></i> Google Pay</div>
-                        <span>0%</span>
-                        <span>R$ 0,00</span>
-                    </li>
-                    <li>
-                        <div class="payment-method"><i class="fas fa-shield-alt"></i> 3DS</div>
-                        <span>0%</span>
-                        <span>R$ 0,00</span>
-                    </li>
-                    <li>
-                        <div class="payment-method"><i class="fas fa-bolt"></i> PIX Automático</div>
-                        <span>0%</span>
-                        <span>R$ 0,00</span>
-                    </li>
+                   <li><div class="payment-method"><i class="fas fa-qrcode"></i> Pix</div><span>0%</span><span>R$ 0,00</span></li>
+                   <li><div class="payment-method"><i class="fas fa-barcode"></i> Boleto</div><span>0%</span><span>R$ 0,00</span></li>
+                   <li><div class="payment-method"><i class="fas fa-credit-card"></i> Cartão de crédito</div><span>0%</span><span>R$ 0,00</span></li>
+                   <li><div class="payment-method"><i class="fas fa-money-bill-wave"></i> Pic Pay</div><span>0%</span><span>R$ 0,00</span></li>
+                   <li><div class="payment-method"><i class="fab fa-apple-pay"></i> Apple Pay</div><span>0%</span><span>R$ 0,00</span></li>
+                   <li><div class="payment-method"><i class="fab fa-google-pay"></i> Google Pay</div><span>0%</span><span>R$ 0,00</span></li>
+                   <li><div class="payment-method"><i class="fas fa-shield-alt"></i> 3DS</div><span>0%</span><span>R$ 0,00</span></li>
+                   <li><div class="payment-method"><i class="fas fa-bolt"></i> PIX Automático</div><span>0%</span><span>R$ 0,00</span></li>
                 </ul>
+            </section>
+
+            <!-- Informações adicionais -->
+            <section class="payment-table-card"></section> 
+
+            <section class="additional-info-grid"> 
+                <div class="info-card">
+                    <div class="info-content"><span>Abandono C.</span><strong>0</strong></div>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+                <div class="info-card">
+                    <div class="info-content"><span>Reembolso</span><strong>0%</strong></div>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+                <div class="info-card">
+                    <div class="info-content"><span>Charge Back</span><strong>0%</strong></div>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+                <div class="info-card">
+                    <div class="info-content"><span>MED</span><strong>0%</strong></div>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
             </section>
         </main>
 
         <aside class="sidebar-right">
-            <div class="info-card">
-                <div class="info-content">
-                    <span>Abandono C.</span>
-                    <strong>0</strong>
-                </div>
-                <i class="fas fa-ellipsis-h"></i>
-            </div>
-            <div class="info-card">
-                <div class="info-content">
-                    <span>Reembolso</span>
-                    <strong>0%</strong>
-                </div>
-                <i class="fas fa-ellipsis-h"></i>
-            </div>
-            <div class="info-card">
-                <div class="info-content">
-                    <span>Charge Back</span>
-                    <strong>0%</strong>
-                </div>
-                <i class="fas fa-ellipsis-h"></i>
-            </div>
-            <div class="info-card">
-                <div class="info-content">
-                    <span>MED</span>
-                    <strong>0%</strong>
-                </div>
-                <i class="fas fa-ellipsis-h"></i>
-            </div>
+            <video width="100%" height="auto" autoplay loop muted playsinline>
+                <source src="video/caveira.mp4" type="video/mp4">
+                Seu navegador não suporta a tag de vídeo.
+            </video>
         </aside>
 
     </div>
 
-</body>
+    <script src="js/dashboard.js"></script>
+    </body>
 </html>

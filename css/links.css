@@ -1,0 +1,203 @@
+/* Caminho: css/links.css */
+
+/* Novo estilo para o botão "Voltar" simples dentro do H2 */
+.main-header h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-voltar-simple {
+    color: var(--text-secondary, #9CA3AF);
+    text-decoration: none;
+    font-size: 1.2rem; /* Tamanho do ícone */
+    transition: color 0.2s ease;
+}
+.btn-voltar-simple:hover {
+    color: var(--text-primary, #F9FAFB);
+}
+
+/* Botão Salvar Produto (copiado do seu CSS antigo e ajustado) */
+.btn-salvar-produto {
+    background-color: var(--accent-green, #10B981);
+    color: var(--text-primary, #F9FAFB);
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.btn-salvar-produto:hover {
+    background-color: #0d926a;
+}
+
+/* Re-estiliza as abas para este contexto */
+.links-container .product-tabs {
+    /* (Esta regra já estava correta) */
+    border-bottom: 1px solid var(--border-color, #374151);
+    margin-bottom: 24px;
+}
+.links-container .product-tabs ul {
+    gap: 24px;
+    border-bottom: none;
+    margin-bottom: 0;
+    overflow-x: auto; 
+    white-space: nowrap;
+}
+.links-container .product-tabs li a {
+    font-size: 0.9rem;
+}
+
+.links-list-container {
+    background-color: var(--bg-dark-secondary, #1F2937);
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid var(--border-color, #374151);
+}
+
+.links-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+/* Estilo do botão (precisa ser redefinido, pois não estamos mais no produtos.css) */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-dark-primary, #111827);
+    border: 1px solid var(--border-color, #374151);
+    border-radius: 8px;
+    padding: 8px 12px;
+    flex-grow: 1;
+    max-width: 300px;
+}
+.search-bar i {
+    color: var(--text-muted, #6B7280);
+    margin-right: 8px;
+}
+.search-bar input {
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--text-primary, #F9FAFB);
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.btn-add-link {
+    background-color: var(--accent-green, #10B981);
+    color: var(--text-primary, #F9FAFB);
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn-add-link:hover {
+    background-color: #0d926a;
+}
+
+/* Estilos da tabela (reutilizados) */
+.links-list-container .table-container {
+    overflow-x: auto;
+}
+.links-list-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+}
+.links-list-container thead th {
+    text-align: left;
+    padding: 12px 16px;
+    color: var(--text-secondary, #9CA3AF);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border-color, #374151);
+}
+.links-list-container tbody td {
+    padding: 16px 16px;
+    border-bottom: 1px solid var(--border-color, #374151);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-primary, #F9FAFB);
+    vertical-align: middle;
+}
+.links-list-container tbody td.no-data {
+    text-align: center;
+    color: var(--text-muted, #6B7280);
+    padding: 40px;
+    font-style: italic;
+}
+.links-list-container td input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+}
+.links-list-container .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 24px;
+}
+/* (O resto dos estilos da tabela como pagination, badges, etc. já estão em produtos.css e dashboard.css) */
+
+
+/* Badge 'Checkout' */
+.badge-checkout {
+    background-color: rgba(59, 130, 246, 0.15);
+    color: #3B82F6;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Link URL */
+.url-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--bg-dark-primary, #111827);
+    border: 1px solid var(--border-color, #374151);
+    border-radius: 6px;
+    padding: 6px 10px;
+    max-width: 250px;
+}
+.url-cell span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: monospace;
+    font-size: 0.85rem;
+}
+.url-cell i {
+    color: var(--text-muted, #6B7280);
+    cursor: pointer;
+}
+
+/* Estilos de badge (caso não estejam no dashboard.css) */
+.status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.status-badge.status-active {
+    background-color: rgba(16, 185, 129, 0.15);
+    color: var(--accent-green, #10B981);
+}
+.actions-menu {
+    position: relative;
+    text-align: right;
+    color: var(--text-secondary, #9CA3AF);
+}

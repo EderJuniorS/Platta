@@ -1,4 +1,4 @@
-/* --- Variáveis de Cor (Dark Mode) --- */
+/* --- Variáveis de Cor (Dark Mode) - DO SEU DASHBOARD --- */
 :root {
     --bg-dark-primary: #111827;  /* Fundo principal mais escuro */
     --bg-dark-secondary: #1F2937; /* Fundo dos cards e sidebars */
@@ -6,9 +6,38 @@
     --text-primary: #F9FAFB;
     --text-secondary: #9CA3AF;
     --text-muted: #6B7280;
-    --accent-green: #10B981;
+    --accent-green: #10B981; /* Verde do dashboard (usado por .btn-primary) */
     --accent-blue: #3B82F6;
     --progress-gradient: linear-gradient(90deg, #FBBF24, #F59E0B);
+
+    /* --- Variáveis (da financeiro.css) --- */
+    --accent-yellow: #EAB308;
+    --alert-bg: #4A2C13;
+    --alert-text: #FDBA74;
+    --alert-border: #F97316;
+
+    /* --- Variáveis (da integracoes.css) --- */
+    --logo-blue: #3B82F6;
+    --logo-purple: #8B5CF6; 
+    
+    /* --- Variáveis (da cupons.css) --- */
+    --bg-table-header: #374151; /* --border-color */
+    --bg-input: #1F2937; /* --bg-dark-secondary */
+
+    /* Variáveis do layout antigo (mapeadas para as novas) */
+    --bg-page: var(--bg-dark-primary);
+    --bg-card: var(--bg-dark-secondary);
+    --primary-green: var(--accent-green);
+    
+    /* Variáveis do seu tema de afiliados (mapeadas) */
+    --status-green-text: var(--accent-green);
+    --status-green-bg: rgba(16, 185, 129, 0.2);
+
+    /* Variáveis de layout genéricas (mantidas) */
+    --font-family: 'Inter', system-ui, sans-serif;
+    --card-border-radius: 12px;
+    --input-border-radius: 8px;
+    --button-border-radius: 8px;
 }
 
 /* --- Reset Básico --- */
@@ -27,7 +56,7 @@ body {
 /* --- Layout Principal --- */
 .dashboard-container {
     display: grid;
-    grid-template-columns: 260px 1fr 300px; /* Sidebar | Main | Sidebar */
+    grid-template-columns: 260px 1fr 300px; 
     min-height: 100vh;
 }
 
@@ -42,13 +71,11 @@ body {
     flex-direction: column;
     gap: 20px;
 }
-
 .sidebar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
 .sidebar-header .logo {
     display: flex;
     align-items: center;
@@ -56,9 +83,8 @@ body {
     font-size: 1.5rem;
     font-weight: 700;
 }
-.sidebar-header .logo img { height: 24px; } /* Ajuste o tamanho do logo */
+.sidebar-header .logo img { height: 24px; }
 .sidebar-header .fa-search { font-size: 1.1rem; color: var(--text-secondary); }
-
 .faturamento-card {
     background-color: var(--bg-dark-primary);
     border: 1px solid var(--border-color);
@@ -88,7 +114,6 @@ body {
     background: var(--progress-gradient);
     border-radius: 4px;
 }
-
 .main-nav ul { list-style: none; }
 .main-nav li a {
     display: flex;
@@ -112,7 +137,6 @@ body {
     color: #fff;
 }
 .main-nav li a i { width: 20px; text-align: center; }
-
 .badge {
     margin-left: auto;
     font-size: 0.75rem;
@@ -131,16 +155,21 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    overflow-y: auto; 
+    height: 100vh;
 }
-
 .main-header {
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 20px;
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-dark-primary);
+    padding-bottom: 20px;
+    z-index: 10;
 }
 .main-header h2 { font-size: 1.8rem; font-weight: 700; }
-
 .header-center {
     display: flex;
     justify-content: flex-end;
@@ -151,7 +180,6 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    /* background-color: var(--bg-dark-secondary); */
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 8px 12px;
@@ -172,8 +200,6 @@ body {
     align-items: center;
     gap: 16px;
 }
-
-/* Toggle Switch */
 .toggle-switch {
     position: relative;
     display: inline-block;
@@ -202,7 +228,6 @@ body {
 }
 .toggle-switch input:checked + .slider { background-color: var(--accent-blue); }
 .toggle-switch input:checked + .slider:before { transform: translateX(18px); }
-
 .icon-notif { position: relative; }
 .icon-notif .fa-bell { font-size: 1.2rem; color: var(--text-secondary); }
 .notif-dot {
@@ -215,115 +240,59 @@ body {
     top: 0;
     right: 0;
 }
-
-/* ============================================= */
-/* --- Estilo Adicional para User Profile --- */
-/* ============================================= */
-
 .user-profile {
     width: 32px;
     height: 32px;
-    background-color: #4B5563; /* Cor cinza mais escura como fallback */
+    background-color: #4B5563;
     border-radius: 50%;
-    display: flex; /* Para centralizar o conteúdo (iniciais) */
+    display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-primary); /* Cor do texto das iniciais */
+    color: var(--text-primary);
     font-weight: bold;
     font-size: 0.9rem;
-    cursor: pointer; /* Indica que pode ser clicável (para futuro dropdown) */
-    overflow: hidden; /* Caso queira usar imagem no futuro */
+    cursor: pointer;
+    overflow: hidden;
 }
-
-.user-profile span {
-    /* Garante que as iniciais não quebrem linha (se forem longas) */
-    white-space: nowrap; 
+.user-profile:hover { opacity: 0.9; }
+.profile-container {
+    position: relative;
+    display: inline-block;
 }
-
-/* Você pode adicionar :hover styles aqui se quiser */
-.user-profile:hover {
-    opacity: 0.9;
-}
-
-/* --- Stats Grid --- */
-.stats-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-.stat-card {
+.profile-dropdown {
+    display: none;
+    position: absolute;
     background-color: var(--bg-dark-secondary);
-    border-radius: 12px;
-    padding: 20px;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+    z-index: 10;
+    border-radius: 8px;
     border: 1px solid var(--border-color);
+    right: 0;
+    top: 100%;
+    margin-top: 8px;
 }
-.stat-card .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.95rem;
+.profile-dropdown.show { display: block; }
+.profile-dropdown a {
     color: var(--text-secondary);
-}
-.stat-card .stat-value {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    margin-top: 16px;
-}
-
-/* --- Tabela de Pagamentos --- */
-.payment-table-card {
-    background-color: var(--bg-dark-secondary);
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-    overflow: hidden; /* Para os cantos arredondados */
-}
-.card-header-table {
-    display: grid;
-    grid-template-columns: 3fr 1fr 1fr;
-    padding: 16px 24px;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 0.9rem;
     font-weight: 500;
-    color: var(--text-secondary);
-    border-bottom: 1px solid var(--border-color);
 }
-.col-secondary { text-align: right; }
-.card-header-table .fa-sort-down { margin-left: 4px; }
+.profile-dropdown a i { width: 16px; text-align: center; }
+.profile-dropdown a:hover {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+}
 
-.payment-list { list-style: none; }
-.payment-list li {
-    display: grid;
-    grid-template-columns: 3fr 1fr 1fr;
-    align-items: center;
-    padding: 14px 24px;
-    border-bottom: 1px solid var(--border-color);
-    font-size: 0.95rem;
-    font-weight: 500;
-}
-.payment-list li:last-child { border-bottom: none; }
-.payment-list li span { text-align: right; color: var(--text-primary); }
-.payment-list li span:nth-child(2) { color: var(--text-secondary); }
-
-.payment-method {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-.payment-method i {
-    font-size: 1.2rem;
-    width: 20px;
-    text-align: center;
-    color: var(--text-secondary);
-}
-/* Cores específicas dos ícones de pagamento (opcional) */
-.payment-method .fa-qrcode { color: #2DD4BF; }
-.payment-method .fa-apple-pay { color: #fff; }
-.payment-method .fa-google-pay { color: #fff; }
 
 /* ======================= */
 /* 3. SIDEBAR DIREITA      */
 /* ======================= */
-/* REMOVA OU COMENTE TODO O BLOCO DE ESTILOS .sidebar-right */
 .sidebar-right {
     background-color: var(--bg-dark-secondary);
     padding: 24px;
@@ -332,107 +301,166 @@ body {
     flex-direction: column;
     gap: 16px;
 } 
-/* Os estilos .info-card e .info-content podem ser mantidos, pois são reutilizados */
-.info-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--bg-dark-primary);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 20px;
-}
-.info-card .info-content span {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    display: block;
-}
-.info-card .info-content strong {
-    font-size: 1.2rem;
-    font-weight: 700;
-    display: block;
-    margin-top: 4px;
-}
-.info-card .fa-ellipsis-h { color: var(--text-muted); }
-
-/* NOVO: Estilos para o vídeo */
 .sidebar-right video {
     max-width: 100%; 
     height: auto;   
     border-radius: 8px; 
-    
-    /* ADICIONE UMA DESTAS LINHAS: */
     mix-blend-mode: screen; 
-    /* OU experimente: */
-    /* mix-blend-mode: lighten; */ 
 }
 
-/* ============================================= */
-/* --- INÍCIO: Estilos para a Nova Seção Grid --- */
-/* ============================================= */
-.additional-info-grid {
-    display: grid;
-    /* Define 2 colunas de tamanho igual, pode mudar para 4 se preferir */
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 20px; /* Espaçamento entre os cards */
-    margin-top: 20px; /* Adiciona espaço acima desta seção */
-}
-
-/* Ajuste para telas menores (opcional) */
-@media (max-width: 1200px) { /* Exemplo de breakpoint */
-    .additional-info-grid {
-        grid-template-columns: 1fr; /* Empilha os cards em telas menores */
-    }
-}
-/* ============================================= */
-/* --- FIM: Estilos para a Nova Seção Grid --- */
-/* ============================================= */
-
-/* ============================================= */
-/* --- Estilos para Dropdown do Perfil --- */
-/* ============================================= */
-
-.profile-container {
-    position: relative; /* Necessário para posicionar o dropdown */
-    display: inline-block; /* Para não ocupar a largura toda */
-}
-
-.profile-dropdown {
-    display: none; /* Escondido por padrão */
-    position: absolute;
-    background-color: var(--bg-dark-secondary); /* Usa a cor de fundo secundária */
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
-    z-index: 10;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    right: 0; /* Alinha à direita do container */
-    top: 100%; /* Posiciona abaixo do ícone */
-    margin-top: 8px; /* Pequeno espaço entre o ícone e o menu */
-}
-
-/* Mostra o dropdown quando a classe .show é adicionada */
-.profile-dropdown.show {
-    display: block;
-}
-
-.profile-dropdown a {
-    color: var(--text-secondary);
-    padding: 12px 16px;
-    text-decoration: none;
-    display: flex; /* Para alinhar ícone e texto */
+/* ================================== */
+/* --- ESTILOS GLOBAIS DE PÁGINA --- */
+/* ================================== */
+.btn {
+    display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.5rem;
+    padding: 0.65rem 1.25rem; /* Padding ajustado do cupons.css */
+    font-family: var(--font-family);
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--button-border-radius);
+    cursor: pointer;
+    transition: opacity 0.2s;
 }
-
-.profile-dropdown a i {
-    width: 16px; /* Garante alinhamento dos ícones */
-    text-align: center;
+.btn svg {
+    width: 1.15rem;
+    height: 1.15rem;
 }
-
-.profile-dropdown a:hover {
-    background-color: var(--border-color); /* Muda a cor no hover */
+.btn:hover {
+    opacity: 0.9;
+}
+.btn-primary {
+    background-color: var(--accent-green);
     color: var(--text-primary);
+}
+.btn-secondary {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+
+/* ================================== */
+/* --- ESTILOS DE PÁGINA: CUPONS --- */
+/* ================================== */
+
+/* Card Principal */
+.coupons-card {
+    background-color: var(--bg-card);
+    border-radius: var(--card-border-radius);
+    padding: 1.5rem;
+    border: 1px solid var(--border-color); /* Consistência */
+}
+
+/* Cabeçalho do Card */
+.coupons-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Título H1 dentro do card de cupons */
+.coupons-card h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+/* Sublinhado verde */
+.coupons-card h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--accent-green);
+    border-radius: 2px;
+}
+
+/* Barra de Pesquisa */
+.coupons-card .search-bar {
+    position: relative;
+    min-width: 300px;
+}
+
+.coupons-card .search-bar svg {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--text-secondary);
+}
+
+.coupons-card .search-bar input {
+    width: 100%;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--input-border-radius);
+    padding: 0.75rem 0.75rem 0.75rem 2.5rem; 
+    font-family: var(--font-family);
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.coupons-card .search-bar input::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Estilos da Tabela */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto; 
+    border-radius: 8px; 
+    overflow: hidden; 
+}
+
+.table-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-wrapper thead {
+    background-color: var(--bg-table-header);
+}
+
+.table-wrapper th {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+/* Mensagem de Tabela Vazia */
+.no-data-message {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    padding: 2.5rem;
+    /* Remove o fundo, pois o .coupons-card já o tem */
+}
+
+/* Responsividade Específica de Cupons */
+@media (max-width: 768px) {
+    .coupons-card .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .coupons-card .search-bar {
+        width: 100%;
+        min-width: auto;
+    }
 }

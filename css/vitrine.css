@@ -1,0 +1,246 @@
+.vitrine-container {
+    max-width: 1400px; /* Ajuste a largura máxima conforme necessário */
+    margin: 0 auto;
+}
+
+/* --- Cabeçalho --- */
+.vitrine-header {
+    margin-bottom: 30px;
+}
+.vitrine-header h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+/* --- Barra de Filtros --- */
+.filter-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Alinha verticalmente ao centro */
+    margin-bottom: 40px;
+    gap: 20px;
+    flex-wrap: wrap; 
+}
+
+/* Barra de Pesquisa */
+.filter-bar .search-bar {
+    display: flex;
+    align-items: center;
+    background-color: transparent; /* Fundo transparente */
+    border: 1px solid var(--border-color, #374151); /* Borda cinza */
+    border-radius: 8px; /* Arredondado */
+    padding: 10px 14px; 
+    min-width: 250px;
+    flex-grow: 1; /* Permite esticar um pouco */
+    max-width: 400px; /* Limite */
+}
+.filter-bar .search-bar i { color: var(--text-muted, #6B7280); margin-right: 10px; }
+.filter-bar .search-bar input {
+    background: none; border: none; outline: none;
+    color: var(--text-primary, #F9FAFB); font-size: 0.9rem; width: 100%;
+}
+.filter-bar .search-bar input::placeholder { color: var(--text-muted, #6B7280); }
+
+/* Opções de Filtro (Dropdowns e Botão) */
+.filter-options {
+    display: flex;
+    align-items: center; /* Alinha itens verticalmente */
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* Wrapper para o Select com Label Flutuante */
+.filter-select {
+    position: relative; 
+}
+
+.filter-select label {
+    position: absolute; 
+    top: -8px; 
+    left: 10px; 
+    font-size: 0.7rem; 
+    /* AJUSTADO: Cor do label mais clara */
+    color: var(--text-secondary, #9CA3AF); 
+    font-weight: 500;
+    /* AJUSTADO: Fundo corresponde ao fundo do container principal */
+    background-color: var(--bg-dark-primary, #111827); 
+    padding: 0 4px; 
+    text-transform: none; 
+    pointer-events: none; 
+}
+
+.filter-select select {
+    /* AJUSTADO: Fundo sólido */
+    /* background-color: var(--bg-dark-secondary, #1F2937); 
+    border: 1px solid var(--border-color, #374151); 
+    border-radius: 8px; */
+    padding: 10px 30px 10px 14px; 
+    color: var(--text-primary, #F9FAFB);
+    font-size: 0.9rem;
+    font-weight: 500;
+    appearance: none; -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%239CA3AF'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 0 1 1.414 0L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 0-1.414z' clip-rule='evenodd' /%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 10px center; background-size: 1em 1em;
+    cursor: pointer;
+    width: 190px; 
+    height: 40px; 
+    box-sizing: border-box; 
+}
+.filter-select select:focus { outline: none; border-color: var(--accent-blue, #3B82F6); }
+.filter-select option { background-color: var(--bg-dark-secondary, #1F2937); }
+
+.btn-filter {
+    /* AJUSTADO: Fundo sólido */
+    background-color: var(--bg-dark-secondary, #1F2937); 
+    border: 1px solid var(--border-color, #374151); 
+    color: var(--text-secondary, #9CA3AF);
+    border-radius: 8px; 
+    padding: 10px 16px; 
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    width: 180px; 
+    height: 58px; 
+    justify-content: center; 
+    box-sizing: border-box; 
+}
+.btn-filter:hover {
+    border-color: var(--text-secondary, #9CA3AF);
+    color: var(--text-primary, #F9FAFB);
+}
+
+/* ... (Resto do CSS da vitrine continua igual) ... */
+
+/* --- Seção de Produtos --- */
+.products-section {
+    margin-bottom: 40px;
+}
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text-primary, #F9FAFB);
+}
+.section-title i { margin-left: 5px; color: #6fa75a; /* Cor do cacto */}
+
+/* Grid de Produtos */
+.products-grid {
+    display: grid;
+    /* 4 colunas com largura mínima, ajustando-se ao tamanho */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 25px;
+}
+
+/* Card de Produto Individual */
+.product-card {
+    background-color: var(--card-bg, #2d3748); /* Fundo do card */
+    border-radius: 12px;
+    overflow: hidden; /* Para a imagem arredondada */
+    border: 1px solid var(--border-color, #374151);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.product-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Proporção da imagem */
+    object-fit: cover; /* Cobre o espaço sem distorcer */
+}
+
+.card-content {
+    padding: 16px;
+}
+
+.card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.card-title h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary, #F9FAFB);
+    /* Limita o texto a uma linha */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.temp-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #f59e0b; /* Cor laranja/amarela para temperatura */
+}
+.temp-badge i { font-size: 0.7rem; }
+
+.commission-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #9CA3AF);
+    margin-bottom: 2px;
+}
+.commission-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent-green, #10B981); /* Verde para o valor */
+    margin-bottom: 16px;
+}
+
+.card-links {
+    display: flex;
+    flex-wrap: wrap; /* Permite quebrar linha se houver muitos links */
+    gap: 10px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color, #374151);
+}
+.card-links a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary, #9CA3AF);
+    transition: color 0.2s ease;
+}
+.card-links a:hover {
+    color: var(--text-primary, #F9FAFB);
+}
+.card-links a i {
+    font-size: 0.75rem;
+    color: var(--accent-green, #10B981); /* Ícone verde */
+}
+
+/* --- Responsividade (Exemplo Básico) --- */
+@media (max-width: 768px) {
+    .filter-bar {
+        flex-direction: column;
+        align-items: stretch; /* Ocupa largura total */
+    }
+    .filter-options {
+        justify-content: space-between; /* Espalha as opções */
+        width: 100%;
+    }
+    .filter-bar .search-bar {
+        max-width: none; /* Ocupa largura total */
+    }
+    .btn-filter {
+       width: 100%; /* Botão ocupa largura total */
+       justify-content: center;
+       margin-top: 10px;
+    }
+    .products-grid {
+        /* Muda para 1 ou 2 colunas em telas menores */
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    }
+}

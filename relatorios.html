@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios - Platta</title>
+    <link rel="stylesheet" href="css/dashboard.css"> 
+    <link rel="stylesheet" href="css/relatorios.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="dark-theme"> 
+
+    <div class="dashboard-container">
+
+        <aside class="sidebar-left">
+            <header class="sidebar-header">
+                <div class="logo">
+                    <img src="img/Logo.png" alt="Platta Logo"> <span>Platta</span> 
+                </div>
+                <i class="fas fa-search"></i>
+            </header>
+
+            <div class="faturamento-card">
+                <span>Faturamento</span>
+                <strong>R$ 0,00 / R$ 10K</strong>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 0%;"></div>
+                </div>
+                <span>0%</span>
+            </div>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li> 
+                    <li><a href="produtos.html"><i class="fas fa-box-open"></i> Produtos</a></li> 
+                    <li><a href="vitrine.html"><i class="fas fa-store"></i> Vitrine <span class="badge badge-green">Novo</span></a></li> 
+                    <li><a href="vendas.html"><i class="fas fa-tag"></i> Minhas Vendas</a></li> 
+                    <li><a href="assinaturas.html"><i class="fas fa-signature"></i> Assinaturas</a></li> 
+                    <li class="active"><a href="relatorios.html"><i class="fas fa-chart-line"></i> Relatórios</a></li> 
+                    <li><a href="afiliados.html"><i class="fas fa-handshake"></i> Afiliados</a></li>
+                    <li><a href="financeiro.html"><i class="fas fa-wallet"></i> Financeiro</a></li>
+                    <li><a href="integracoes.html"><i class="fas fa-cogs"></i> Integrações</a></li>
+                    <li><a href="cupons.html"><i class="fas fa-ticket-alt"></i> Cupons</a></li>
+                    <li><a href="quiz.html"><i class="fas fa-question-circle"></i> Quiz <span class="badge badge-green">Novo</span></a></li>
+                    <li><a href="#"><i class="fas fa-filter"></i> Funileiro <span class="badge badge-blue">Beta</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <h2>Relatórios</h2> 
+                </div>
+                 <div class="header-center">
+                 </div>
+
+                <div class="header-right">
+                     <button class="btn-export">
+                        Exportar <i class="fas fa-chevron-down"></i>
+                    </button>
+
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked> <span class="slider"></span>
+                    </label>
+                    <div class="icon-notif">
+                        <i class="fas fa-bell"></i> <span class="notif-dot"></span>
+                    </div>
+                    <div class="profile-container"> 
+                        <div class="user-profile" id="userProfileDisplay"></div>
+                        <div class="profile-dropdown" id="profileDropdown">
+                            <a href="usuario.html">
+                                <i class="fas fa-user-circle"></i> Perfil
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="reports-container"> 
+                
+                <nav class="report-nav-tabs">
+                     <ul>
+                        <li class="active"><a href="#"><i class="fas fa-hand-holding-usd"></i> Receita De Co-Produção</a></li>
+                        <li><a href="#"><i class="fas fa-chart-pie"></i> Receita Por Produto</a></li>
+                        <li><a href="#"><i class="fas fa-cart-arrow-down"></i> Vendas Abandonadas</a></li>
+                        <li><a href="#"><i class="fas fa-users"></i> Receita Por Afiliado</a></li>
+                        <li><a href="#"><i class="fas fa-dollar-sign"></i> Saldo A Receber</a></li>
+                    </ul>
+                </nav>
+
+                <section class="report-controls">
+                    <div class="date-filters">
+                        <div class="date-filter-group">
+                            <label for="data-inicial">Data Inicial</label>
+                            <div class="date-input-wrapper">
+                                <input type="text" id="data-inicial" value="28/09/2025" placeholder="dd/mm/aaaa">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                        </div>
+                        <div class="date-filter-group">
+                            <label for="data-final">Data Final</label>
+                             <div class="date-input-wrapper">
+                                <input type="text" id="data-final" value="28/10/2025" placeholder="dd/mm/aaaa">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="view-controls">
+                        <select class="chart-type-select">
+                            <option selected>Barras</option>
+                            <option>Linhas</option>
+                        </select>
+                    </div>
+                </section>
+
+                <nav class="report-sub-tabs">
+                    <ul>
+                        <li class="active"><a href="#">Receita Recebida</a></li>
+                        <li><a href="#">Receita Enviada</a></li>
+                    </ul>
+                </nav>
+
+                <section class="chart-placeholder">
+                    <div class="chart-axes">
+                        <div class="y-axis">
+                            <span>10</span><span>9</span><span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span><span>0</span>
+                        </div>
+                        <div class="x-axis">
+                             <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                        </div>
+                        <div class="grid-lines"></div> 
+                    </div>
+                </section>
+
+                 <section class="report-table-section">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                               <td colspan="2" class="no-data">Nenhum registro encontrado</td> 
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div> 
+            </main>
+
+        <aside class="sidebar-right">
+             <video width="100%" height="auto" autoplay loop muted playsinline>
+                <source src="video/caveira.mp4" type="video/mp4">
+                Seu navegador não suporta a tag de vídeo.
+            </video>
+        </aside>
+    </div> 
+
+    <script src="js/dashboard.js"></script> 
+</body>
+</html>

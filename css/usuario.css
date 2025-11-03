@@ -1,0 +1,166 @@
+/* ============================================= */
+/* --- Ajustes Layout da Página de Perfil --- */
+/* ============================================= */
+
+/* --- Variáveis (Pode copiar do seu dashboard.css se quiser consistência) --- */
+:root {
+    --bg-dark-primary: #111827;
+    --bg-dark-secondary: #1F2937;
+    --border-color: #374151;
+    --text-primary: #F9FAFB;
+    --text-secondary: #9CA3AF;
+    --text-muted: #6B7280;
+    --accent-blue: #3B82F6;
+    --accent-green: #10B981;
+}
+
+/* --- Estilos Gerais --- */
+body {
+    background-color: var(--bg-dark-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+}
+
+/* Garante que o main-content permita scroll se necessário */
+.main-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto; /* Permite scroll vertical se o conteúdo for maior */
+}
+
+/* Faz o container do perfil centralizar o card dentro do main-content */
+.profile-page-container {
+    padding: 40px;
+    display: flex; /* Habilita flexbox */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: flex-start; /* Alinha no topo */
+    width: 100%; /* Ocupa a largura do main-content */
+}
+/* --- Card do Perfil --- */
+.profile-card {
+    background-color: #fff; /* Fundo branco como na imagem */
+    color: #111; /* Texto escuro */
+    border-radius: 16px;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px; /* Largura do card */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* --- Foto de Perfil --- */
+.profile-picture-section {
+    position: relative;
+    display: inline-block; /* Para centralizar */
+    margin-bottom: 20px;
+}
+
+.profile-picture-placeholder {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #E0E7FF; /* Azul claro */
+    border: 3px solid var(--accent-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-picture-placeholder i {
+    font-size: 40px;
+    color: var(--accent-blue);
+}
+
+.add-picture-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--accent-blue);
+    color: #fff;
+    border: 2px solid #fff;
+    font-size: 18px;
+    line-height: 26px; /* Ajuste para centralizar o '+' */
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Nome e Email --- */
+.profile-card h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #1F2937;
+}
+
+.user-email {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    display: block; /* Para ter margin-bottom */
+}
+
+/* --- Detalhes do Perfil --- */
+.profile-details {
+    text-align: left; /* Alinha o texto dos detalhes à esquerda */
+    margin-bottom: 30px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #E5E7EB; /* Linha divisória cinza claro */
+}
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.detail-value {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #1F2937; /* Cor escura para o valor */
+}
+
+.detail-value.verified {
+    color: var(--accent-green); /* Verde para verificado */
+    font-weight: 600;
+}
+.detail-value.verified i {
+    margin-left: 5px;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+/* --- Botão Atualizar --- */
+.update-profile-btn {
+    background-color: var(--accent-blue);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s;
+}
+
+.update-profile-btn:hover {
+    background-color: #2563EB; /* Azul um pouco mais escuro */
+}
